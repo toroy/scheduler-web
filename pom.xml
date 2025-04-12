@@ -17,9 +17,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <springboot.version>2.1.10.RELEASE</springboot.version>
         <common.utils.version>1.2.0</common.utils.version>
-        <dal.version>0.0.6-SNAPSHOT</dal.version>
+        <dal.version>1.0.0-SNAPSHOT</dal.version>
         <web.client.version>1.1.0-SNAPSHOT</web.client.version>
-        <common.version>0.0.3-SNAPSHOT</common.version>
+        <common.version>1.0.0-SNAPSHOT</common.version>
         <scheduler.version>0.0.1-SNAPSHOT</scheduler.version>
         <resource.delimiter>@</resource.delimiter>
         <hive.jdbc.version>2.3.1</hive.jdbc.version>
@@ -48,7 +48,7 @@
                 <artifactId>scheduler-client</artifactId>
                 <version>${scheduler.version}</version>
             </dependency>
-            
+
             <dependency>
 				<groupId>com.wholee.platform</groupId>
 				<artifactId>scheduler-common</artifactId>

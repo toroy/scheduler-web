@@ -71,10 +71,10 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.clubfactory.boot</groupId>
-            <artifactId>club-boot-starter-sso</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.clubfactory.boot</groupId>-->
+<!--            <artifactId>club-boot-starter-sso</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>io.netty</groupId>

@@ -42,10 +42,10 @@ public class DqcUserBizService {
         Assert.notNull(dto.getId(), "用户");
 
         UserVO userVO = userService.getUserInfoById(dto.getId());
-        BaseResult<Boolean> baseResult = metaClientService.saveTableOwner(dto.getDbName(), dto.getTableName(), userVO.getUid(), userDto.getUserid());
-        if (baseResult.isSuccess().equals(false)) {
-            throw new BizException(ErrorCode.API_META_ERROR.getErrorCode(), baseResult.getMessage());
-        }
+//        BaseResult<Boolean> baseResult = metaClientService.saveTableOwner(dto.getDbName(), dto.getTableName(), userVO.getUid(), userDto.getUserid());
+//        if (baseResult.isSuccess().equals(false)) {
+//            throw new BizException(ErrorCode.API_META_ERROR.getErrorCode(), baseResult.getMessage());
+//        }
         return true;
     }
 

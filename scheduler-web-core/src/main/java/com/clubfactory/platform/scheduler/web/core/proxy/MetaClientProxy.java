@@ -5,6 +5,7 @@ import com.clubfactory.platform.meta.client.dto.ColumnDto;
 import com.clubfactory.platform.meta.client.dto.TableOwnerDto;
 import com.clubfactory.platform.meta.client.service.MetaClientService;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +27,16 @@ public class MetaClientProxy extends BaseProxy {
     private MetaClientService metaClientService;
 
     public Map<String, TableOwnerDto> getUserByTableKey(String key) {
-        BaseResult<Map<String, TableOwnerDto>> result = metaClientService.getUserByTableKey(Lists.newArrayList(key));
-        checkResult(result.getCode(), result.getMessage());
-        return result.getBody();
+        //BaseResult<Map<String, TableOwnerDto>> result = metaClientService.getUserByTableKey(Lists.newArrayList(key));
+        //checkResult(result.getCode(), result.getMessage());
+        //return result.getBody();
+        return Maps.newHashMap();
     }
 
     public List<ColumnDto> listHiveColumns(String dbName, String tableName) {
-        BaseResult<List<ColumnDto>> result = metaClientService.listHiveColumns(dbName, tableName);
-        checkResult(result.getCode(), result.getMessage());
-        return result.getBody();
+//        BaseResult<List<ColumnDto>> result = metaClientService.listHiveColumns(dbName, tableName);
+//        checkResult(result.getCode(), result.getMessage());
+//        return result.getBody();
+        return Lists.newArrayList();
     }
 }

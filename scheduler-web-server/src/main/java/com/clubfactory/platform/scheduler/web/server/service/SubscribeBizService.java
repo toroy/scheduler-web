@@ -254,20 +254,21 @@ public class SubscribeBizService {
     public List<SimpleDataSourceVo> queryDataSources(String dsName) {
         BaseResult<List<String>> dsList;
         try {
-            dsList = this.metaClientService.listDbSource(dsName);
+            //dsList = this.metaClientService.listDbSource(dsName);
         } catch (Exception e) {
             log.error("获取数据源列表失败", e);
             throw new BizException("元数据服务异常");
         }
-        this.checkResponse(dsList);
-        if (CollectionUtils.isEmpty(dsList.getBody())) {
-            return Lists.newArrayList();
-        }
-        Map<String,String> dataSourceMap = this.listDataSources();
-        return dsList.getBody().stream()
-                .filter(dsHost -> Objects.nonNull(dataSourceMap.get(dsHost)))
-                .map(dsHost -> SimpleDataSourceVo.dto2Vo(dsHost, dataSourceMap))
-                .collect(Collectors.toList());
+//        this.checkResponse(dsList);
+//        if (CollectionUtils.isEmpty(dsList.getBody())) {
+//            return Lists.newArrayList();
+//        }
+//        Map<String,String> dataSourceMap = this.listDataSources();
+//        return dsList.getBody().stream()
+//                .filter(dsHost -> Objects.nonNull(dataSourceMap.get(dsHost)))
+//                .map(dsHost -> SimpleDataSourceVo.dto2Vo(dsHost, dataSourceMap))
+//                .collect(Collectors.toList());
+        return Lists.newArrayList();
     }
 
     /**
@@ -278,21 +279,22 @@ public class SubscribeBizService {
     public List<SimpleSubscribeVo> queryTables(String tableName) {
         BaseResult<List<TableDto>> tableDtos;
         try {
-            tableDtos = this.metaClientService.listTables(tableName);
+            //tableDtos = this.metaClientService.listTables(tableName);
         } catch (Exception e) {
             log.error("获取Table列表失败", e);
             throw new BizException("元数据服务异常");
         }
 
-        this.checkResponse(tableDtos);
-        if (CollectionUtils.isEmpty(tableDtos.getBody())) {
-            return Lists.newArrayList();
-        }
-        Map<String,String> dataSourceMap = this.listDataSources();
-        return tableDtos.getBody().stream()
-                .filter(item -> Objects.nonNull(dataSourceMap.get(item.getDbHost())))
-                .map(dto -> SimpleSubscribeVo.dto2Vo(dto, dataSourceMap))
-                .collect(Collectors.toList());
+        //this.checkResponse(tableDtos);
+//        if (CollectionUtils.isEmpty(tableDtos.getBody())) {
+//            return Lists.newArrayList();
+//        }
+//        Map<String,String> dataSourceMap = this.listDataSources();
+//        return tableDtos.getBody().stream()
+//                .filter(item -> Objects.nonNull(dataSourceMap.get(item.getDbHost())))
+//                .map(dto -> SimpleSubscribeVo.dto2Vo(dto, dataSourceMap))
+//                .collect(Collectors.toList());
+        return Lists.newArrayList();
     }
 
     /**
@@ -337,24 +339,25 @@ public class SubscribeBizService {
         List<String> tableIdentifierKeys = alertSubList.stream().map(SubscribeDtoMapper::mapToTableSimpleDto)
                 .filter(StringUtils::isNotBlank).collect(Collectors.toList());
         BaseResult<Map<String, String>> tableOwnerMap;
-        try {
-            tableOwnerMap = this.metaClientService.getUserNameByTableKey(tableIdentifierKeys);
-        } catch (Exception e) {
-            log.error("获取责任人列表失败", e);
-            return Maps.newHashMap();
-        }
-        if (tableOwnerMap == null) {
-            log.error("元数据服务返回值为NULL");
-            return Maps.newHashMap();
-        }
-        if (!tableOwnerMap.isSuccess()) {
-            log.error("元数据服务调用失败: {}", tableOwnerMap.getMessage());
-            return Maps.newHashMap();
-        }
-        if (MapUtils.isEmpty(tableOwnerMap.getBody())) {
-            return Maps.newHashMap();
-        }
-        return tableOwnerMap.getBody();
+//        try {
+//            tableOwnerMap = this.metaClientService.getUserNameByTableKey(tableIdentifierKeys);
+//        } catch (Exception e) {
+//            log.error("获取责任人列表失败", e);
+//            return Maps.newHashMap();
+//        }
+//        if (tableOwnerMap == null) {
+//            log.error("元数据服务返回值为NULL");
+//            return Maps.newHashMap();
+//        }
+//        if (!tableOwnerMap.isSuccess()) {
+//            log.error("元数据服务调用失败: {}", tableOwnerMap.getMessage());
+//            return Maps.newHashMap();
+//        }
+//        if (MapUtils.isEmpty(tableOwnerMap.getBody())) {
+//            return Maps.newHashMap();
+//        }
+//        return tableOwnerMap.getBody();
+        return Maps.newHashMap();
 
     }
 

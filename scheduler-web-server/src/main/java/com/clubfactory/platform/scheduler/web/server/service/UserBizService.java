@@ -33,8 +33,8 @@ public class UserBizService {
 		userInfoVo.setDutys(dutyVOs);
 		userInfoVo.setName(userName);
 		userInfoVo.setIsAdmin(userDto.getIsAdmin());
-		userInfoVo.setAvatar(userDto.getAvatar());
-		userInfoVo.setEmail(userDto.getEmail());
+		//userInfoVo.setAvatar(userDto.getAvatar());
+		//userInfoVo.setEmail(userDto.getEmail());
 
 		UserInfo userInfoWhere = new UserInfo();
 		userInfoWhere.setIsDeleted(false);

@@ -90,37 +90,38 @@ public class DqcBizService {
 
     public PageUtils<DqcTableRuleVo> listByPage(String dbName, String tableName, Integer pageNo, Integer pageSize) {
 
-        BaseResult<PageUtils<TableDto>> baseResult = metaClientService.listHiveTableByPage(dbName, tableName,  pageSize, pageNo);
-        if (baseResult.isSuccess().equals(false) || CollectionUtils.isEmpty(baseResult.getBody().getRows())) {
-            return new PageUtils<DqcTableRuleVo>(pageSize, pageNo);
-        }
-        PageUtils<TableDto> tableDtoPageUtils = baseResult.getBody();
-        List<TableDto> tableDtos = tableDtoPageUtils.getRows();
-
-        // 获取用户名
-        List<String> uids = tableDtos.stream().filter(dto -> dto.getUid() != null).map(TableDto::getUid).collect(Collectors.toList());
-        Map<String, String> userNameMap = userService.getUserNameMapByUid(uids);
-
-        // 获取规则数
-        List<String> tableNames = tableDtos.stream().map(TableDto::getName).collect(Collectors.toList());
-        List<DqcRuleVO> ruleVOS = dqcRuleService.listByTableNames(tableNames);
-        Map<String, List<String>>  dbTableMap = ruleVOS.stream().map(rule -> getDbTable(rule.getDbName(), rule.getTableName())).collect(Collectors.groupingBy(s -> s));
-
-        // 组装参数
-        List<DqcTableRuleVo> vos = tableDtos.stream().map(dto -> {
-            DqcTableRuleVo dqcTableRuleVo = new DqcTableRuleVo();
-            if (dbTableMap.get(getDbTable(dto.getDbName(),dto.getName())) != null) {
-                dqcTableRuleVo.setRuleNum(dbTableMap.get(getDbTable(dto.getDbName(), dto.getName())).size());
-            }
-            dqcTableRuleVo.setDbName(dto.getDbName());
-            dqcTableRuleVo.setTableName(dto.getName());
-            if (dto.getUid() != null) {
-                dqcTableRuleVo.setUserName(userNameMap.get(dto.getUid().toString()));
-            }
-            dqcTableRuleVo.setRuleId(dto.getDbName()+"."+dto.getName());
-            return dqcTableRuleVo;
-        }).collect(Collectors.toList());
-        return new PageUtils<>(vos, tableDtoPageUtils.getTotalCount(), tableDtoPageUtils.getPageSize(), tableDtoPageUtils.getPageNo());
+//        BaseResult<PageUtils<TableDto>> baseResult = metaClientService.listHiveTableByPage(dbName, tableName,  pageSize, pageNo);
+//        if (baseResult.isSuccess().equals(false) || CollectionUtils.isEmpty(baseResult.getBody().getRows())) {
+//            return new PageUtils<DqcTableRuleVo>(pageSize, pageNo);
+//        }
+//        PageUtils<TableDto> tableDtoPageUtils = baseResult.getBody();
+//        List<TableDto> tableDtos = tableDtoPageUtils.getRows();
+//
+//        // 获取用户名
+//        List<String> uids = tableDtos.stream().filter(dto -> dto.getUid() != null).map(TableDto::getUid).collect(Collectors.toList());
+//        Map<String, String> userNameMap = userService.getUserNameMapByUid(uids);
+//
+//        // 获取规则数
+//        List<String> tableNames = tableDtos.stream().map(TableDto::getName).collect(Collectors.toList());
+//        List<DqcRuleVO> ruleVOS = dqcRuleService.listByTableNames(tableNames);
+//        Map<String, List<String>>  dbTableMap = ruleVOS.stream().map(rule -> getDbTable(rule.getDbName(), rule.getTableName())).collect(Collectors.groupingBy(s -> s));
+//
+//        // 组装参数
+//        List<DqcTableRuleVo> vos = tableDtos.stream().map(dto -> {
+//            DqcTableRuleVo dqcTableRuleVo = new DqcTableRuleVo();
+//            if (dbTableMap.get(getDbTable(dto.getDbName(),dto.getName())) != null) {
+//                dqcTableRuleVo.setRuleNum(dbTableMap.get(getDbTable(dto.getDbName(), dto.getName())).size());
+//            }
+//            dqcTableRuleVo.setDbName(dto.getDbName());
+//            dqcTableRuleVo.setTableName(dto.getName());
+//            if (dto.getUid() != null) {
+//                dqcTableRuleVo.setUserName(userNameMap.get(dto.getUid().toString()));
+//            }
+//            dqcTableRuleVo.setRuleId(dto.getDbName()+"."+dto.getName());
+//            return dqcTableRuleVo;
+//        }).collect(Collectors.toList());
+//        return new PageUtils<>(vos, tableDtoPageUtils.getTotalCount(), tableDtoPageUtils.getPageSize(), tableDtoPageUtils.getPageNo());
+        return new PageUtils<DqcTableRuleVo>();
     }
 
     private String getDbTable(String dbName, String tableName) {
@@ -456,12 +457,13 @@ public class DqcBizService {
     @Nullable
     private TableOwnerDto getTableOwnerDto(String dbName, String tableName) {
         String key = DbUtil.getTableKey(DbUtil.HIVE_VALUE, dbName, tableName);
-        BaseResult<Map<String, TableOwnerDto>> baseResult = metaClientService.getUserByTableKey(Lists.newArrayList(key));
-        TableOwnerDto tableOwnerDto = null;
-        if (baseResult.isSuccess().equals(true)) {
-            tableOwnerDto = baseResult.getBody().get(key);
-        }
-        return tableOwnerDto;
+//        BaseResult<Map<String, TableOwnerDto>> baseResult = metaClientService.getUserByTableKey(Lists.newArrayList(key));
+//        TableOwnerDto tableOwnerDto = null;
+//        if (baseResult.isSuccess().equals(true)) {
+//            tableOwnerDto = baseResult.getBody().get(key);
+//        }
+//        return tableOwnerDto;
+        return new TableOwnerDto();
     }
 
     public Map<String, List<ContentDto>> listEnums() {

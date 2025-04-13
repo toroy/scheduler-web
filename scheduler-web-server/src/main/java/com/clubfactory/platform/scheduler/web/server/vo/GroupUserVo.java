@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.vo;
 
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.po.GroupInfo;
 import com.clubfactory.platform.scheduler.dal.po.UserInfo;
 import lombok.Data;

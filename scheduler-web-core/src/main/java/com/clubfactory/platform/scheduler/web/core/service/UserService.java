@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.core.service;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.dao.UserMapper;
 import com.clubfactory.platform.scheduler.dal.po.User;
 import com.clubfactory.platform.scheduler.web.core.enums.CacheEnum;

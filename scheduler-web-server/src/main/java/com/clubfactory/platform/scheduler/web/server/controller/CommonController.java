@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.controller;
 
-import com.clubfactory.platform.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
 import com.clubfactory.platform.scheduler.web.server.service.MacroVarBizService;
 import com.clubfactory.platform.scheduler.web.server.service.TeamBizService;
 import com.clubfactory.platform.scheduler.web.server.service.UserBizService;

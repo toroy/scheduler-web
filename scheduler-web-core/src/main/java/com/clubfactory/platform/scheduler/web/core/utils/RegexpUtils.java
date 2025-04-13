@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.core.utils;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Matcher;

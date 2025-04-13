@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
 import com.clubfactory.platform.scheduler.web.core.enums.ErrorCode;
 
 import lombok.extern.slf4j.Slf4j;

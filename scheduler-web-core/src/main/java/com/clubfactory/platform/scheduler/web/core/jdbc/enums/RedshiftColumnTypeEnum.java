@@ -10,9 +10,9 @@ import java.sql.Timestamp;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.math3.geometry.euclidean.oned.Interval;
 
-import com.clubfactory.platform.common.constant.DateFormatPattern;
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.DateUtil;
+import com.clubfactory.platform.scheduler.common.constant.DateFormatPattern;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.DateUtil;
 import com.clubfactory.platform.scheduler.web.core.jdbc.constant.ColumnTypeConstant;
 
 import lombok.AllArgsConstructor;

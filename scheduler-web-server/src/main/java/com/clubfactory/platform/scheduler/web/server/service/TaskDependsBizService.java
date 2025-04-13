@@ -11,8 +11,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.stereotype.Service;
 
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.scheduler.common.utils.TaskDependsUtil;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.dal.utils.TaskDependsUtil;
 import com.clubfactory.platform.scheduler.dal.enums.DependTypeEnum;
 import com.clubfactory.platform.scheduler.dal.po.JobOnline;
 import com.clubfactory.platform.scheduler.dal.po.Task;

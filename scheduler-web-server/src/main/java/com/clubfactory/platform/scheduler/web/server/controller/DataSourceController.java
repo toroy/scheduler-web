@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
 import com.clubfactory.platform.scheduler.web.core.dto.DataSourceDto;
 import com.clubfactory.platform.scheduler.web.core.dto.DataSourceEditDto;
 import com.clubfactory.platform.scheduler.web.core.enums.ErrorCode;

@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.core.utils;
 
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.enums.DbType;
 import com.clubfactory.platform.scheduler.web.core.dto.DataSourceDto;
 import com.clubfactory.platform.scheduler.web.core.enums.ErrorCode;

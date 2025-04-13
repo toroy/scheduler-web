@@ -4,7 +4,7 @@ package com.clubfactory.platform.scheduler.web.core.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.dao.SysConfigMapper;
 import com.clubfactory.platform.scheduler.dal.enums.ConfigType;
 import com.clubfactory.platform.scheduler.dal.po.SysConfig;

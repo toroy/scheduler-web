@@ -11,8 +11,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.dao.ClusterMapper;
 import com.clubfactory.platform.scheduler.dal.enums.ClusterTypeEnum;
 import com.clubfactory.platform.scheduler.dal.enums.CommonStatus;

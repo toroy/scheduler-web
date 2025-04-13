@@ -1,9 +1,9 @@
 package com.clubfactory.platform.scheduler.web.server.dqc.service;
 
-import com.clubfactory.platform.common.constant.DateFormatPattern;
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.DateUtil;
+import com.clubfactory.platform.scheduler.common.constant.DateFormatPattern;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.DateUtil;
 import com.clubfactory.platform.scheduler.common.utils.placeholder.MacroVarConvertUtils;
 import com.clubfactory.platform.scheduler.dal.po.DqcPartition;
 import com.clubfactory.platform.scheduler.web.core.dqc.service.DqcPartitionService;

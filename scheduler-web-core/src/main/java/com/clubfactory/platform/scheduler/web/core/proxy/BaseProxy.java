@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.core.proxy;
 
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 
 /**
  * 代理基础类

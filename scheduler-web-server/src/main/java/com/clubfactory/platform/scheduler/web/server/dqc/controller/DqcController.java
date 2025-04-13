@@ -1,8 +1,8 @@
 package com.clubfactory.platform.scheduler.web.server.dqc.controller;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.bean.Pager;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.Pager;
 import com.clubfactory.platform.scheduler.web.server.dqc.dto.ContentDto;
 import com.clubfactory.platform.scheduler.web.server.dqc.dto.DqcJobDto;
 import com.clubfactory.platform.scheduler.web.server.dqc.dto.DqcRunDto;

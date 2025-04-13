@@ -1,8 +1,8 @@
 package com.clubfactory.platform.scheduler.web.core.service;
 
-import com.clubfactory.platform.common.bean.tuple.Tuple2;
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.bean.tuple.Tuple2;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.dao.JobCollectMapper;
 import com.clubfactory.platform.scheduler.dal.dto.SubscribeDto;
 import com.clubfactory.platform.scheduler.dal.enums.IncrementTypeEnum;

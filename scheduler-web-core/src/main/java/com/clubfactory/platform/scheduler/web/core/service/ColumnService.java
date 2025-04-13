@@ -10,8 +10,8 @@ import javax.annotation.Resource;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.dao.ColumnMapper;
 import com.clubfactory.platform.scheduler.dal.po.Column;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.ColumnDto;

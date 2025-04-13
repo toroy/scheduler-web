@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.amazonaws.services.s3.model.GetObjectRequest;
-import com.clubfactory.platform.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
 import com.clubfactory.platform.scheduler.dal.dto.SchedulerTimeDto;
 import com.clubfactory.platform.scheduler.dal.enums.DependTypeEnum;
 import com.clubfactory.platform.scheduler.dal.po.JobOnline;

@@ -2,7 +2,7 @@ package com.clubfactory.platform.scheduler.web.server.dto;
 
 import java.util.List;
 
-import com.clubfactory.platform.common.bean.Pager;
+import com.clubfactory.platform.scheduler.common.bean.Pager;
 import com.clubfactory.platform.scheduler.dal.enums.JobCategoryEnum;
 import com.clubfactory.platform.scheduler.dal.enums.TaskStatusEnum;
 import com.clubfactory.platform.scheduler.web.server.vo.SortByVo;

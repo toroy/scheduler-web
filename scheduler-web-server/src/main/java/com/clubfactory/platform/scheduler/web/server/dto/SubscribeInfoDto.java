@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.server.dto;
 
 import com.beust.jcommander.internal.Lists;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.enums.SubscribeType;
 import com.clubfactory.platform.scheduler.dal.po.AlertSub;
 import com.clubfactory.platform.scheduler.dal.po.SubGroupRel;

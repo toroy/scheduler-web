@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.server.dto;
 
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.po.GroupInfo;
 import com.clubfactory.platform.scheduler.dal.po.UserGroupRel;
 import com.clubfactory.platform.scheduler.web.server.login.LocalUser;

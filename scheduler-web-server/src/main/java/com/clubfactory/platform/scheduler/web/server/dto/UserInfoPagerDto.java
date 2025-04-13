@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.dto;
 
-import com.clubfactory.platform.common.bean.Pager;
+import com.clubfactory.platform.scheduler.common.bean.Pager;
 import com.clubfactory.platform.scheduler.dal.po.UserInfo;
 import com.clubfactory.platform.scheduler.web.server.login.LocalUser;
 import lombok.Data;

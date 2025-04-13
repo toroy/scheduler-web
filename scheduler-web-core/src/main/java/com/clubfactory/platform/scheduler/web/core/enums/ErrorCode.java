@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.core.enums;
 
-import com.clubfactory.platform.common.constant.IErrorCode;
+import com.clubfactory.platform.scheduler.common.constant.IErrorCode;
 
 
 public enum ErrorCode implements IErrorCode {

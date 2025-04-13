@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.server.vo;
 
 import com.beust.jcommander.internal.Lists;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.po.GroupInfo;
 import com.clubfactory.platform.scheduler.dal.po.UserInfo;
 import lombok.Data;

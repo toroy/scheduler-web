@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.server.vo;
 
 import com.beust.jcommander.internal.Lists;
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.po.AlertSub;
 import com.clubfactory.platform.scheduler.dal.po.GroupInfo;
 import lombok.Data;

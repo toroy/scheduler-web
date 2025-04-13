@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.dqc.controller;
 
-import com.clubfactory.platform.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
 import com.clubfactory.platform.scheduler.dal.po.DqcPartition;
 import com.clubfactory.platform.scheduler.web.core.dqc.vo.DqcPartitionVO;
 import com.clubfactory.platform.scheduler.web.server.dqc.service.DqcPartitionBizService;

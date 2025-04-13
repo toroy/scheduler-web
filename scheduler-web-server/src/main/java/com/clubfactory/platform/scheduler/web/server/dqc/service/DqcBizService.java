@@ -1,11 +1,11 @@
 package com.clubfactory.platform.scheduler.web.server.dqc.service;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.bean.tuple.Tuple3;
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.tuple.Tuple3;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.meta.client.dto.TableDto;
 import com.clubfactory.platform.meta.client.dto.TableOwnerDto;
 import com.clubfactory.platform.meta.client.service.MetaClientService;

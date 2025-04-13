@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.dqc.dto;
 
-import com.clubfactory.platform.common.bean.Pager;
+import com.clubfactory.platform.scheduler.common.bean.Pager;
 import com.clubfactory.platform.scheduler.web.server.dqc.enums.DqcTaskStatusEnum;
 import lombok.Data;
 

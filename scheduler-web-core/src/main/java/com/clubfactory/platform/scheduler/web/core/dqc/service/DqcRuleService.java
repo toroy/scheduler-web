@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.core.dqc.service;
 
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.dao.DqcRuleMapper;
 import com.clubfactory.platform.scheduler.dal.po.DqcRule;
 import com.clubfactory.platform.scheduler.web.core.dqc.vo.DqcRuleVO;

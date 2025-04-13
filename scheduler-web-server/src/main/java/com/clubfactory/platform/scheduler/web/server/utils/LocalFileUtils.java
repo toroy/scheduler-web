@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.utils;
 
-import com.clubfactory.platform.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

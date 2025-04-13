@@ -1,8 +1,8 @@
 package com.clubfactory.platform.scheduler.web.server.controller;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
 import com.clubfactory.platform.scheduler.dal.enums.ScriptType;
 import com.clubfactory.platform.scheduler.web.server.config.parambind.CurrentUser;
 import com.clubfactory.platform.scheduler.web.server.dto.ChangeDto;

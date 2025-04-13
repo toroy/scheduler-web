@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.core.service;
 
-import com.clubfactory.platform.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
 import com.clubfactory.platform.scheduler.dal.dao.TaskStatisticMapper;
 import com.clubfactory.platform.scheduler.dal.po.TaskStatistic;
 import com.clubfactory.platform.scheduler.web.core.vo.TaskStatisticVO;

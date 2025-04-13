@@ -22,6 +22,10 @@
             <groupId>com.wholee.platform</groupId>
             <artifactId>scheduler-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.wholee.platform</groupId>
+            <artifactId>scheduler-client</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.wholee.platform</groupId>

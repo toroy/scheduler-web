@@ -3,7 +3,7 @@ package com.clubfactory.platform.scheduler.web.core.utils;
 import java.io.IOException;
 import java.util.Map;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Call;

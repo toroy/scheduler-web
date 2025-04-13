@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.dao.ProjectMapper;
 import com.clubfactory.platform.scheduler.dal.po.Project;
 import com.clubfactory.platform.scheduler.dal.po.Script;

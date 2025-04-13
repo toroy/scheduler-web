@@ -1,10 +1,10 @@
 package com.clubfactory.platform.scheduler.web.server.provider;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.bean.Pager;
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.Pager;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.enums.JobCategoryEnum;
 import com.clubfactory.platform.scheduler.dal.enums.TaskStatusEnum;
 import com.clubfactory.platform.scheduler.dal.po.*;

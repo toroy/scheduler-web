@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.core.proxy;
 
-import com.clubfactory.platform.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
 import com.clubfactory.platform.meta.client.dto.ColumnDto;
 import com.clubfactory.platform.meta.client.dto.TableOwnerDto;
 import com.clubfactory.platform.meta.client.service.MetaClientService;

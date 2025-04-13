@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.core.service;
 
-import com.clubfactory.platform.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
 import com.clubfactory.platform.scheduler.dal.dao.TableOnlineLineageDependMapper;
 import com.clubfactory.platform.scheduler.dal.po.TableLineageDepend;
 import com.clubfactory.platform.scheduler.dal.po.TableOnlineLineageDepend;

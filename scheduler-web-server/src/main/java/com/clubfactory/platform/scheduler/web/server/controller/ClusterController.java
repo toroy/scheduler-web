@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.server.controller;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
 import com.clubfactory.platform.scheduler.web.core.dto.ClusterDto;
 import com.clubfactory.platform.scheduler.web.core.dto.ClusterEditDto;
 import com.clubfactory.platform.scheduler.web.server.config.parambind.CurrentUser;

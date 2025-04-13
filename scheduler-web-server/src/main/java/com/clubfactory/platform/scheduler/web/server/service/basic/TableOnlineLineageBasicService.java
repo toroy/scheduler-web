@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.service.basic;
 
-import com.clubfactory.platform.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
 import com.clubfactory.platform.scheduler.dal.dao.TableOnlineLineageMapper;
 import com.clubfactory.platform.scheduler.dal.enums.LineageTypeEnum;
 import com.clubfactory.platform.scheduler.dal.po.TableOnlineLineage;

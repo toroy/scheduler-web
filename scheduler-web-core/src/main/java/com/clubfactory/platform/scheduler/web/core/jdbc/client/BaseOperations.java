@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.lang.NonNull;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.web.core.jdbc.connect.ConnectService;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.DbDto;
 import com.google.common.collect.Lists;

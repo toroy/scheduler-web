@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.core.dqc.service;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.dao.DqcTableMapper;
 import com.clubfactory.platform.scheduler.dal.po.DqcTable;
 import com.clubfactory.platform.scheduler.web.core.dqc.vo.DqcTableVO;

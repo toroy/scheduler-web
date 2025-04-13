@@ -1,8 +1,8 @@
 package com.clubfactory.platform.scheduler.web.server.service;
 
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.po.Project;
 import com.clubfactory.platform.scheduler.web.core.service.ProjectService;
 import com.clubfactory.platform.scheduler.web.core.service.UserService;

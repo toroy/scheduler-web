@@ -28,10 +28,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.tuple.Tuple2;
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.tuple.Tuple2;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.enums.DependTypeEnum;
 import com.clubfactory.platform.scheduler.dal.enums.JobCategoryEnum;
 import com.clubfactory.platform.scheduler.dal.po.JobOnlineDepends;

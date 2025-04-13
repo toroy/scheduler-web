@@ -1,9 +1,9 @@
 package com.clubfactory.platform.scheduler.web.server.service;
 
-import com.clubfactory.platform.common.bean.tuple.Tuple2;
-import com.clubfactory.platform.common.bean.tuple.Tuple3;
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.bean.tuple.Tuple2;
+import com.clubfactory.platform.scheduler.common.bean.tuple.Tuple3;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.enums.TaskStatusEnum;
 import com.clubfactory.platform.scheduler.dal.po.Job;
 import com.clubfactory.platform.scheduler.dal.po.JobOnline;

@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import com.clubfactory.platform.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
 import com.clubfactory.platform.scheduler.web.core.utils.DFSUtils;
 import com.clubfactory.platform.scheduler.web.server.BaseTest;
 

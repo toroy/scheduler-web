@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.login;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.po.BasePO;
 
 public class LocalUser {

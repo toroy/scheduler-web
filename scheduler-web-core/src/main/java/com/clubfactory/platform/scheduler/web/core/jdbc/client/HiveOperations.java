@@ -13,7 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.ColumnDto;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.DbDto;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.TableDto;

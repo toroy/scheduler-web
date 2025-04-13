@@ -1,9 +1,9 @@
 package com.clubfactory.platform.scheduler.web.server.provider;
 
 import com.alibaba.fastjson.JSON;
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.bean.Pager;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.Pager;
 import com.clubfactory.platform.scheduler.web.client.dto.TableConnectDto;
 import com.clubfactory.platform.scheduler.web.client.enums.DbTypeEnum;
 import com.clubfactory.platform.scheduler.web.client.service.TableClientService;

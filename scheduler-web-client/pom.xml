@@ -15,10 +15,10 @@
   </properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.wholee.platform</groupId>
-			<artifactId>common-utils</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>com.wholee.platform</groupId>
+            <artifactId>scheduler-common</artifactId>
+        </dependency>
 	</dependencies>
 
     <!-- 显示源码 -->

@@ -15,7 +15,7 @@ import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.dao.MachineMapper;
 import com.clubfactory.platform.scheduler.dal.enums.CommonStatus;
 import com.clubfactory.platform.scheduler.dal.enums.MachineTypeEnum;

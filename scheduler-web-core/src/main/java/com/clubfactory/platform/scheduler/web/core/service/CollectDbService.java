@@ -1,7 +1,7 @@
 package com.clubfactory.platform.scheduler.web.core.service;
 
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.common.utils.AESUtils;
 import com.clubfactory.platform.scheduler.dal.dao.CollectDbMapper;
 import com.clubfactory.platform.scheduler.dal.enums.CommonStatus;

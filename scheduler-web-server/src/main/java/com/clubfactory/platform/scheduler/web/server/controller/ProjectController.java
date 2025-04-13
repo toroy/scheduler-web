@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
 import com.clubfactory.platform.scheduler.dal.po.Project;
 import com.clubfactory.platform.scheduler.web.core.enums.ErrorCode;
 import com.clubfactory.platform.scheduler.web.core.vo.ProjectVO;

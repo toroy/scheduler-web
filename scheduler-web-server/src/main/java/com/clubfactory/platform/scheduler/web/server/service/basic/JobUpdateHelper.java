@@ -3,7 +3,7 @@ package com.clubfactory.platform.scheduler.web.server.service.basic;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.clubfactory.platform.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
 import com.clubfactory.platform.scheduler.dal.enums.DbType;
 import com.clubfactory.platform.scheduler.dal.po.CollectDb;
 import com.clubfactory.platform.scheduler.dal.po.Job;

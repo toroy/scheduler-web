@@ -3,7 +3,7 @@ package com.clubfactory.platform.scheduler.web.core.jdbc.client;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.ColumnDto;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.DbDto;
 import com.clubfactory.platform.scheduler.web.core.jdbc.dto.TableDto;

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
 import com.clubfactory.platform.scheduler.web.server.dto.OverviewDto;
 import com.clubfactory.platform.scheduler.web.server.dto.TaskQueryDto;
 import com.clubfactory.platform.scheduler.web.server.login.LocalUser;

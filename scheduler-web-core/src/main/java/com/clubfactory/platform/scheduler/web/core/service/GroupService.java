@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.clubfactory.platform.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.Assert;
 import com.clubfactory.platform.scheduler.dal.dao.GroupMapper;
 import com.clubfactory.platform.scheduler.dal.po.Group;
 import com.clubfactory.platform.scheduler.web.core.enums.GroupStatusEnum;

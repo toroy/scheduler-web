@@ -1,6 +1,6 @@
 package com.clubfactory.platform.scheduler.web.server.service;
 
-import com.clubfactory.platform.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
 import com.clubfactory.platform.scheduler.web.client.vo.TableLineageGraphVo;
 import com.clubfactory.platform.scheduler.web.core.service.TableOnlineLineageService;
 import com.clubfactory.platform.scheduler.web.server.BaseTest;

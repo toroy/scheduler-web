@@ -2,9 +2,9 @@ package com.clubfactory.platform.scheduler.web.client.service;
 
 import java.util.List;
 
-import com.clubfactory.platform.common.bean.BaseResult;
-import com.clubfactory.platform.common.bean.PageUtils;
-import com.clubfactory.platform.common.bean.Pager;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.PageUtils;
+import com.clubfactory.platform.scheduler.common.bean.Pager;
 import com.clubfactory.platform.scheduler.web.client.dto.*;
 import com.clubfactory.platform.scheduler.web.client.enums.DbTypeEnum;
 import com.clubfactory.platform.scheduler.web.client.vo.TableConnectVo;

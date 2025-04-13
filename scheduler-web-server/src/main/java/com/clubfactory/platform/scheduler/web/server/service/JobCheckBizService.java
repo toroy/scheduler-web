@@ -1,10 +1,10 @@
 package com.clubfactory.platform.scheduler.web.server.service;
 
 import com.alibaba.fastjson.JSON;
-import com.clubfactory.platform.common.exception.BizException;
-import com.clubfactory.platform.common.util.Assert;
-import com.clubfactory.platform.common.util.BeanUtil;
-import com.clubfactory.platform.common.util.DateUtil;
+import com.clubfactory.platform.scheduler.common.exception.BizException;
+import com.clubfactory.platform.scheduler.common.util.Assert;
+import com.clubfactory.platform.scheduler.common.util.BeanUtil;
+import com.clubfactory.platform.scheduler.common.util.DateUtil;
 import com.clubfactory.platform.meta.client.dto.TableSimpleDto;
 import com.clubfactory.platform.meta.client.enums.DbType;
 import com.clubfactory.platform.meta.client.utils.DbUtil;

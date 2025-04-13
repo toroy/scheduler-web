@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.clubfactory.platform.common.bean.BaseResult;
+import com.clubfactory.platform.scheduler.common.bean.BaseResult;
 import com.clubfactory.platform.scheduler.web.core.vo.UserVO;
 import com.clubfactory.platform.scheduler.web.server.login.LocalUser;
 import com.clubfactory.platform.scheduler.web.server.login.LoginUserDto;

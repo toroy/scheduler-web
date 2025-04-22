@@ -7,9 +7,9 @@ spring:
    # url: jdbc:log4jdbc:mysql://127.0.0.1:3306/scheduler_dev
    # username: root
    # password: 123456
-    url: jdbc:log4jdbc:mysql://34.220.2.144:3306/scheduler_pre
-    username: root
-    password: -wWSLPyXqE0SLRksGsk2y7cjE2xycZmB
+    url: jdbc:log4jdbc:mysql://117.50.245.35:3306/scheduler
+    username: zg
+    password: zg123456
     type: com.alibaba.druid.pool.DruidDataSource
   #上传限制文件大小
   servlet:
@@ -25,7 +25,7 @@ server:
   port: 8082
   
 zookeeper:
-  quorum: 34.220.2.144:2181
+  quorum: 117.50.245.35:2181
   
 logging:
   path: ./logs

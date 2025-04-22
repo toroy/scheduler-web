@@ -18,7 +18,7 @@ public class MetaDataInitializer {
     /**
      * 服务启动时初始化sc_team表
      */
-    @PostConstruct
+    //@PostConstruct
     public void initTeamInfo(){
         if (teamBizService.teamInfosIsEmpty()){
             teamBizService.refreshTeams();

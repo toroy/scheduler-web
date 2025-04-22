@@ -23,8 +23,8 @@ public class FilterConfig {
         registration.setOrder(1);
 
         // 初始化参数
-        registration.addInitParameter("ssoServerUrl", environment.getProperty("club-boot.sso.ssoServerUrl"));
-        registration.addInitParameter("sessionTimeout", environment.getProperty("club-boot.sso.sessionTimeout"));
+//        registration.addInitParameter("ssoServerUrl", environment.getProperty("club-boot.sso.ssoServerUrl"));
+//        registration.addInitParameter("sessionTimeout", environment.getProperty("club-boot.sso.sessionTimeout"));
 
         return registration;
 	}

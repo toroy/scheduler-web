@@ -4,7 +4,7 @@ spring:
       driver-class-name: net.sf.log4jdbc.DriverSpy
       web-stat-filter:
         enabled: false
-    url: jdbc:log4jdbc:mysql://172.23.180.77:3306/scheduler_pre
+    url: jdbc:log4jdbc:mysql://10.60.156.93:3306/scheduler_pre
     username: root
     password: -wWSLPyXqE0SLRksGsk2y7cjE2xycZmB
     type: com.alibaba.druid.pool.DruidDataSource
@@ -18,7 +18,7 @@ server:
   port: 8090
   
 zookeeper:
-  quorum: 172.23.180.77:2181
+  quorum: 10.60.156.93:2181
   
 logging:
   path: /root/logs/gaia-web

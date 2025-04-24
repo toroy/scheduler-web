@@ -10,12 +10,9 @@ import java.util.stream.Collectors;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.mutable.MutableObject;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.amazonaws.services.s3.model.GetObjectRequest;
-import com.clubfactory.platform.scheduler.common.exception.BizException;
 import com.clubfactory.platform.scheduler.dal.dto.SchedulerTimeDto;
 import com.clubfactory.platform.scheduler.dal.enums.DependTypeEnum;
 import com.clubfactory.platform.scheduler.dal.po.JobOnline;
@@ -44,19 +41,6 @@ public class AssistantBasicService {
 
     @Resource
     protected GraphBizService graphBizService;
-
-
-    public GetObjectRequest getGetObjectRequestFrom(String url, MutableObject<String> fileName) {
-        String url2 = url.replace("s3://", "");
-        String[] arr = url2.split("[/]", 2);
-        if (arr.length != 2) {
-            throw new BizException("无法识别 s3 url: " + url);
-        }
-        GetObjectRequest gor = new GetObjectRequest(arr[0], arr[1]);
-        String[] arr2 = url2.split("[/]");
-        fileName.setValue(arr2[arr2.length - 1]);
-        return gor;
-    }
 
 
     public void loopTopJobIds(long projectId, Vertex rootVertex, List<JobOnlineVO> jobVos,

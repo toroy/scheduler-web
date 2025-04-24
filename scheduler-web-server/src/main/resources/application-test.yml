@@ -4,9 +4,9 @@ spring:
       driver-class-name: net.sf.log4jdbc.DriverSpy
       web-stat-filter:
         enabled: false
-    url: jdbc:log4jdbc:mysql://10.60.156.93:3306/scheduler_pre
-    username: root
-    password: -wWSLPyXqE0SLRksGsk2y7cjE2xycZmB
+    url: jdbc:log4jdbc:mysql://10.60.156.93:3306/scheduler
+    username: zg
+    password: zg123456
     type: com.alibaba.druid.pool.DruidDataSource
   #上传限制文件大小
   servlet:
@@ -21,7 +21,7 @@ zookeeper:
   quorum: 10.60.156.93:2181
   
 logging:
-  path: /root/logs/gaia-web
+  path: /home/ubuntu/opt/scheduler-web
   level: 
     root: info
 

@@ -80,7 +80,7 @@ resource:
   storage:
     dfs:
       # HDFS,S3,OSS
-      type: S3
+      type: HDFS
   
   
   

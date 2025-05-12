@@ -74,7 +74,7 @@ public class LoginFilter implements Filter {
 
         Environment env = SpringBean.getBean(Environment.class);
         List<String> profiles = Arrays.asList(env.getActiveProfiles());
-        List<String> devProfiles = Lists.newArrayList("local","dev");
+        List<String> devProfiles = Lists.newArrayList("local","dev", "test");
         devProfiles.retainAll(profiles);
         if (CollectionUtils.isNotEmpty(devProfiles)){
             LoginUserDto userDto = new LoginUserDto();

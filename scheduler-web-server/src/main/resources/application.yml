@@ -71,7 +71,7 @@ db:
 ## 脚本资源保存
 dfs:
   super:
-    user: hdfs
+    user: ubuntu
 resource:
   upload:
     suffixes: txt,log,sh,cfg,py,java,sql,hql,xml,properties,jar,zip,json,whl

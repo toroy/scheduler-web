@@ -52,7 +52,7 @@ data:
 
 
 fs:
-  defaultFS: s3a://cfdp
+  defaultFS: hdfs://117.50.245.35:9000/
   s3a:
     endpoint: s3.us-west-2.amazonaws.com
     access:

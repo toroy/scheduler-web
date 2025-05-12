@@ -49,12 +49,13 @@ public class ScriptController {
             @ApiImplicitParam(name = "scriptType", value = "脚本类型", dataType = "ScriptType")
     })
     @PostMapping(value = "/save")
-    public BaseResult<SimpleScriptVo> addScript(@CurrentUser @ApiIgnore LoginUserDto userDto,
+    public BaseResult<SimpleScriptVo> addScript(
                                                 @RequestParam(value = "scriptName") String scriptName,
                                                 @RequestParam(value = "desc") String desc,
                                                 @RequestParam(value = "scriptType") ScriptType scriptType,
                                                 @RequestParam(value = "isSync", required = false) Integer isSync,
                                                 @RequestParam(value = "scriptFile") MultipartFile scriptFile) {
+        LoginUserDto userDto = LocalUser.get();
         return new BaseResult<>(scriptBizService.addScript(userDto,scriptFile,scriptName,desc,scriptType));
     }
 
@@ -66,7 +67,7 @@ public class ScriptController {
             @ApiImplicitParam(name = "scriptType", value = "脚本类型", dataType = "ScriptType")
     })
     @PostMapping(value = "/update")
-    public BaseResult<Boolean> updateScript(@CurrentUser @ApiIgnore LoginUserDto userDto,
+    public BaseResult<Boolean> updateScript(
                                             @RequestParam(value = "id",required = true) Long id,
                                             @RequestParam(value = "scriptName",required = false ) String scriptName,
                                             @RequestParam(value = "desc",required = false) String desc,
@@ -74,6 +75,7 @@ public class ScriptController {
                                             @RequestParam(value = "scriptType" ,required = false) ScriptType scriptType,
                                             @RequestParam(value = "scriptFile" ,required = false ) MultipartFile scriptFile) {
 
+        LoginUserDto userDto = LocalUser.get();
         scriptBizService.updateScript(userDto,id,scriptFile,scriptName,desc,scriptType);
         return new BaseResult<>(true);
     }
@@ -105,7 +107,8 @@ public class ScriptController {
 
     @ApiOperation(value="脚本类型枚举", notes="脚本级别枚举")
     @GetMapping("/types")
-    public BaseResult<Map> listScriptLevels(@CurrentUser @ApiIgnore LoginUserDto userDto) {
+    public BaseResult<Map> listScriptLevels() {
+        LoginUserDto userDto = LocalUser.get();
         return new BaseResult<>(scriptBizService.listScriptTypes(userDto));
     }
 
@@ -115,8 +118,9 @@ public class ScriptController {
             @ApiImplicitParam(name = "id", value = "脚本ID", dataType = "Long")
     })
     @GetMapping("/del")
-    public BaseResult<Boolean> deleteScript(@CurrentUser @ApiIgnore LoginUserDto userDto,
+    public BaseResult<Boolean> deleteScript(
                                             Long id) {
+        LoginUserDto userDto = LocalUser.get();
         scriptBizService.deleteScript(userDto,id);
         return new BaseResult<>(true);
     }
@@ -139,9 +143,10 @@ public class ScriptController {
             @ApiImplicitParam(name = "content", value = "脚本内容", dataType = "String")
     })
     @PostMapping("/edit")
-    public BaseResult<Boolean> edit(@CurrentUser @ApiIgnore LoginUserDto userDto,
+    public BaseResult<Boolean> edit(
                                                String content,
                                                Long id) {
+        LoginUserDto userDto = LocalUser.get();
         scriptBizService.editScript(userDto,id,content);
         return new BaseResult<>(true);
     }

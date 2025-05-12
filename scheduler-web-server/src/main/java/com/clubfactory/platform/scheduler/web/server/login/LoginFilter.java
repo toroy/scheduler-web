@@ -55,8 +55,6 @@ public class LoginFilter implements Filter {
     private List<Pattern> excludePathPatterns;
 
     private String ssoServerUrl;
-    
-    public static final String LOGOUT = "/user/logout";
 
     public static final String SAVE_TOKEN_URL = "/ssoAuthToken/save";
 
@@ -107,25 +105,6 @@ public class LoginFilter implements Filter {
                 return;
         	}
         }
-
-
-        // 登出
-        if (requertUri.contains(LOGOUT)) {
-			// 清除cookies，防止再登
-			HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-			//CookieUtil.setCookie(httpServletResponse, Constant.COOKIE_NAME, null, 0);
-
-			// 告诉前端成功，由前端进行跳转
-			response.setStatus(HttpStatus.SC_OK);
-			response.setContentType("application/json;charset=UTF-8");
-			BaseResult<Boolean> result = new BaseResult<Boolean>();
-			result.setBody(true);
-			response.getWriter().write(JSON.toJSONString(result));
-			// 跳转到sso登录页
-			//String requestUrl = String.format(SSO_LOGIN, StringUtils.removeEnd(request.getRequestURL().toString(), request.getRequestURI().toString()));
-			//response.sendRedirect(requestUrl);
-			return;
-		}
 
         if (!StringUtils.isEmpty(requertUri) && requertUri.equals(SAVE_TOKEN_URL)) {
             //saveTokenAndRedirect(request, response);

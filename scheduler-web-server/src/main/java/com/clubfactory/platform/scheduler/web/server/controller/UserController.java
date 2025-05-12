@@ -1,11 +1,15 @@
 package com.clubfactory.platform.scheduler.web.server.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.curator.shaded.com.google.common.collect.Maps;
+import org.apache.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +37,22 @@ public class UserController {
 		UserInfoVo userInfoVo = userBizService.getUserInfo(userDto);
 		return new BaseResult<UserInfoVo>(userInfoVo);
 	}
-	
+
+	@GetMapping("logout")
+	public void logout(HttpServletResponse response) throws IOException {
+		// 告诉前端成功，由前端进行跳转
+		response.setStatus(HttpStatus.SC_OK);
+		response.setContentType("application/json;charset=UTF-8");
+		BaseResult<Boolean> result = new BaseResult<Boolean>();
+		result.setBody(true);
+		response.getWriter().write(JSON.toJSONString(result));
+		// 跳转到sso登录页
+		//String requestUrl = String.format(SSO_LOGIN, StringUtils.removeEnd(request.getRequestURL().toString(), request.getRequestURI().toString()));
+		//response.sendRedirect(requestUrl);
+		return;
+	}
+
+
 	@GetMapping("listByName")
 	public BaseResult<Map<String, List<UserVO>>> listByName(String name) {
 		List<UserVO> users = userBizService.listByName(name);
@@ -41,7 +60,8 @@ public class UserController {
 		map.put("users", users);
 		return new BaseResult<Map<String, List<UserVO>>>(map);
 	}
-	
+
+
 	
 	
 }

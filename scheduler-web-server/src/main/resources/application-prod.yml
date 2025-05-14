@@ -5,9 +5,9 @@ spring:
       web-stat-filter:
         enabled: false
       test-while-idle: false
-    url: jdbc:log4jdbc:mysql://scheduler.cpwariwr2ucb.us-west-2.rds.amazonaws.com:3306/scheduler?characterEncoding=utf8&characterSetResults=utf8
-    username: public_admin
-    password: SKGQ6AHRumKMKoUJ
+    url: jdbc:log4jdbc:mysql://10.60.156.93:3306/scheduler
+    username: zg
+    password: zg123456
     type: com.alibaba.druid.pool.DruidDataSource
   #上传限制文件大小
   servlet:
@@ -19,7 +19,7 @@ server:
   port: 8080
   
 zookeeper:
-  quorum: 172.23.3.201,172.23.4.144,172.23.1.107:2181
+  quorum: 10.60.156.93:2181,10.60.64.13:2181,10.60.83.19:2181
   
 logging:
   path: /root/logs/gaia-web
@@ -45,7 +45,7 @@ data:
 
 
 fs:
-  defaultFS: hdfs://117.50.245.35:9000/
+  defaultFS: hdfs://10.60.156.93:9000/
   s3a:
     endpoint: s3.us-west-2.amazonaws.com
     access:

@@ -4,7 +4,7 @@
 
 
     <name>scheduler-web</name>
-    <groupId>com.wholee.platform</groupId>
+    <groupId>com.bigdata.platform</groupId>
     <artifactId>scheduler-web</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -38,19 +38,19 @@
     <dependencyManagement>
         <dependencies>
         	<dependency>
-                <groupId>com.wholee.platform</groupId>
+                <groupId>com.bigdata.platform</groupId>
                 <artifactId>scheduler-web-client</artifactId>
                 <version>${web.client.version}</version>
             </dependency>
         
             <dependency>
-                <groupId>com.wholee.platform</groupId>
+                <groupId>com.bigdata.platform</groupId>
                 <artifactId>scheduler-client</artifactId>
                 <version>${scheduler.version}</version>
             </dependency>
 
             <dependency>
-				<groupId>com.wholee.platform</groupId>
+				<groupId>com.bigdata.platform</groupId>
 				<artifactId>scheduler-common</artifactId>
 				<version>${common.version}</version>
 			</dependency>
@@ -147,19 +147,19 @@
             </dependency>
 
             <dependency>
-                <groupId>com.wholee.platform</groupId>
+                <groupId>com.bigdata.platform</groupId>
                 <artifactId>scheduler-dal</artifactId>
                 <version>${dal.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.wholee.platform</groupId>
+                <groupId>com.bigdata.platform</groupId>
                 <artifactId>scheduler-web-core</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>com.wholee.platform</groupId>
+                <groupId>com.bigdata.platform</groupId>
                 <artifactId>scheduler-web-server</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>

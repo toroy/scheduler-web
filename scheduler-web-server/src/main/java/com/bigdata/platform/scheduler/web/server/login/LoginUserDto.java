@@ -33,6 +33,8 @@ public class LoginUserDto {
 	private String alias;
 
 	private String userid;
+
+	private String password;
 //
 //	public Long uidToLong() {
 ////		try {

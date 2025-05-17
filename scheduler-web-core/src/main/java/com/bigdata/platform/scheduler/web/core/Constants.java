@@ -219,4 +219,6 @@ public interface Constants {
      */
     String PHONE_NO_MASK_STR = "****";
     String MINI_PHONE_NO_MASK_STR = "***";
+
+    String TOKEN_KEY = "token";
 }

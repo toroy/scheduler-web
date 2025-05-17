@@ -3,6 +3,8 @@ package com.bigdata.platform.scheduler.web.server.utils;
 import com.bigdata.platform.scheduler.web.server.login.LoginUserDto;
 import com.bigdata.platform.scheduler.common.util.Assert;
 
+import java.util.UUID;
+
 /**
  * @author xiejiajun
  */
@@ -20,6 +22,9 @@ public class LoginUserUtils {
 //            return userDto.getDepartment().get(0);
 //        }
         return null;
+    }
+    public static String getUniqueString() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
 }

@@ -1,17 +1,5 @@
 package com.bigdata.platform.scheduler.web.server.login;
 
-//import com.bigdata.middlewaresso.client.bo.CheckTokenBO;
-//import com.bigdata.middlewaresso.client.bo.Result;
-//import com.bigdata.middlewaresso.client.common.Constant;
-//import com.bigdata.middlewaresso.client.common.CookieUtil;
-//import com.bigdata.middlewaresso.client.common.UrlUtil;
-//import com.bigdata.middlewaresso.client.common.httpwarp.HttpClientUtil;
-//import com.bigdata.middlewaresso.client.common.httpwarp.RequestBuilder;
-//import com.bigdata.middlewaresso.client.dto.SsoUserDTO;
-//import com.bigdata.middlewaresso.client.enums.LoginType;
-//import com.bigdata.middlewaresso.client.filter.MidwareSsoLoginFilter;
-//import com.bigdata.middlewaresso.client.service.SsoLoginService;
-//import com.bigdata.middlewaresso.client.user.SsoProxy;
 import com.bigdata.platform.scheduler.web.core.service.TokenService;
 import com.bigdata.platform.scheduler.web.core.service.UserService;
         import com.bigdata.platform.scheduler.web.core.utils.SpringBean;
@@ -53,7 +41,6 @@ public class LoginFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-
 
         Environment env = SpringBean.getBean(Environment.class);
         List<String> profiles = Arrays.asList(env.getActiveProfiles());

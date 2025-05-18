@@ -63,11 +63,6 @@ public class LoginFilter implements Filter {
             return;
         }
 
-        if (token == null) {
-            response.setStatus(HttpStatus.SC_UNAUTHORIZED);
-            return;
-        }
-
         // 通过token直接登录
         String userToken = request.getParameter(Constants.TOKEN_KEY);
         if (StringUtils.isNotBlank(userToken)) {
@@ -77,6 +72,11 @@ public class LoginFilter implements Filter {
                 filterChain.doFilter(request, response);
                 return;
         	}
+        }
+
+        if (token == null) {
+            response.setStatus(HttpStatus.SC_UNAUTHORIZED);
+            return;
         }
 
         Object userLogin = LoginGuavaCacheUtil.get(token);

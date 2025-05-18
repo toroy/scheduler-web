@@ -221,4 +221,6 @@ public interface Constants {
     String MINI_PHONE_NO_MASK_STR = "***";
 
     String TOKEN_KEY = "token";
+
+    String DEFAULT_TOKEN_KEY = "bigdata";
 }

@@ -18,8 +18,8 @@ public class FilterConfig {
 		FilterRegistrationBean<LoginFilter> registration = new FilterRegistrationBean<LoginFilter>();
         registration.setFilter(new LoginFilter());
         registration.addUrlPatterns("/*");
-        registration.addInitParameter("excludePath","/swagger-ui.html,/check-health");
-        registration.setName("midwareSsoLoginFilter");
+        registration.addInitParameter("excludePath","/swagger-ui.html,/login/");
+        registration.setName("loginFilter");
         registration.setOrder(1);
 
         // 初始化参数

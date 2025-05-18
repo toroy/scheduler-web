@@ -3,6 +3,7 @@ package com.bigdata.platform.scheduler.web.server.service;
 import com.alibaba.druid.util.Utils;
 import com.bigdata.platform.scheduler.common.exception.BizException;
 import com.bigdata.platform.scheduler.common.util.Assert;
+import com.bigdata.platform.scheduler.common.util.BeanUtil;
 import com.bigdata.platform.scheduler.dal.po.User;
 import com.bigdata.platform.scheduler.web.core.service.UserService;
 import com.bigdata.platform.scheduler.web.core.utils.GuavaCacheUtil;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -47,6 +49,8 @@ public class LoginBizService {
         user.setUid(userDto.getUserid().trim());
         user.setAlias(userDto.getAlias() != null ? userDto.getAlias().trim() : userDto.getUserid().trim());
         user.setDepartName(userDto.getDepartName().trim());
+        user.setName(userDto.getName().trim());
+        user.setIsAdmin(false);
         userService.save(user);
         return true;
     }
@@ -64,10 +68,10 @@ public class LoginBizService {
             throw new BizException("密码错误");
         }
 
-        userDto.setDepartName(userVO.getDepartName());
-        userDto.setAlias(userVO.getAlias());
-        String token = LoginUserUtils.getUniqueString();
+        BeanUtil.copyBeanNotNull2Bean(userVO, userDto);
+        userDto.setLocalUserId(userVO.getId());
 
+        String token = LoginUserUtils.getUniqueString();
         LoginGuavaCacheUtil.put(token, userDto);
 
         return token;

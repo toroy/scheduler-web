@@ -1,8 +1,8 @@
 package com.bigdata.platform.scheduler.web.core.proxy;
 
-import com.clubfactory.platform.meta.client.dto.ColumnDto;
-import com.clubfactory.platform.meta.client.dto.TableOwnerDto;
-import com.clubfactory.platform.meta.client.service.MetaClientService;
+import com.bigdata.platform.meta.client.dto.ColumnDto;
+import com.bigdata.platform.meta.client.dto.TableOwnerDto;
+//import com.bigdata.platform.meta.client.service.MetaClientService;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +22,8 @@ import java.util.Map;
 @Slf4j
 public class MetaClientProxy extends BaseProxy {
 
-    @Resource
-    private MetaClientService metaClientService;
+//    @Resource
+//    private MetaClientService metaClientService;
 
     public Map<String, TableOwnerDto> getUserByTableKey(String key) {
         //BaseResult<Map<String, TableOwnerDto>> result = metaClientService.getUserByTableKey(Lists.newArrayList(key));

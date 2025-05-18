@@ -35,12 +35,12 @@
 
 		<dependency>
 			<groupId>com.clubfactory.platform</groupId>
-			<artifactId>meta-client</artifactId>
+			<artifactId>sql-parser</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.clubfactory.platform</groupId>
-			<artifactId>sql-parser</artifactId>
+			<groupId>com.bigdata.platform</groupId>
+			<artifactId>scheduler-web-meta</artifactId>
 		</dependency>
 
 

@@ -1,6 +1,6 @@
 package com.bigdata.platform.scheduler.web.server.dto.mapper;
 
-import com.clubfactory.platform.meta.client.utils.DbUtil;
+import com.bigdata.platform.meta.client.utils.DbUtil;
 import com.bigdata.platform.scheduler.dal.po.AlertSub;
 
 /**

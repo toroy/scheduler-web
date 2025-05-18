@@ -3,7 +3,7 @@ package com.bigdata.platform.scheduler.web.server.dqc.service;
 import com.bigdata.platform.scheduler.web.server.dqc.dto.DqcUserDto;
 import com.bigdata.platform.scheduler.web.server.login.LoginUserDto;
 import com.bigdata.platform.scheduler.common.util.Assert;
-import com.clubfactory.platform.meta.client.service.MetaClientService;
+//import com.clubfactory.platform.meta.client.service.MetaClientService;
 import com.bigdata.platform.scheduler.web.core.service.UserService;
 import com.bigdata.platform.scheduler.web.core.vo.UserVO;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,8 @@ public class DqcUserBizService {
 
     @Resource
     UserService userService;
-    @Resource
-    MetaClientService metaClientService;
+//    @Resource
+//    MetaClientService metaClientService;
 
     public List<UserVO> list(String name) {
         List<UserVO> userVOS = userService.listByName(name);

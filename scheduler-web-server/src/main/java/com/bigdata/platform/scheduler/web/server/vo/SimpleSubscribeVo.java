@@ -1,6 +1,6 @@
 package com.bigdata.platform.scheduler.web.server.vo;
 
-import com.clubfactory.platform.meta.client.dto.TableDto;
+import com.bigdata.platform.meta.client.dto.TableDto;
 import lombok.Data;
 
 import java.util.Map;

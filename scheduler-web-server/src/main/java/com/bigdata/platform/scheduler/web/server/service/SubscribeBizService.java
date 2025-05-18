@@ -12,11 +12,11 @@ import com.bigdata.platform.scheduler.common.bean.PageUtils;
 import com.bigdata.platform.scheduler.common.exception.BizException;
 import com.bigdata.platform.scheduler.common.util.Assert;
 import com.bigdata.platform.scheduler.common.util.BeanUtil;
-import com.clubfactory.platform.meta.client.dto.TableDto;
-import com.clubfactory.platform.meta.client.dto.TableSimpleDto;
-import com.clubfactory.platform.meta.client.enums.DbType;
-import com.clubfactory.platform.meta.client.service.MetaClientService;
-import com.clubfactory.platform.meta.client.utils.DbUtil;
+import com.bigdata.platform.meta.client.dto.TableDto;
+import com.bigdata.platform.meta.client.dto.TableSimpleDto;
+import com.bigdata.platform.meta.client.enums.DbType;
+//import com.clubfactory.platform.meta.client.service.MetaClientService;
+import com.bigdata.platform.meta.client.utils.DbUtil;
 import com.bigdata.platform.scheduler.dal.enums.SubscribeType;
 import com.bigdata.platform.scheduler.dal.po.*;
 import com.bigdata.platform.scheduler.web.client.dto.CheckSubscribeDto;
@@ -68,8 +68,8 @@ public class SubscribeBizService {
     @Resource
     private UserInfoService userInfoService;
 
-    @Resource
-    private MetaClientService metaClientService;
+//    @Resource
+//    private MetaClientService metaClientService;
 
 
     /**

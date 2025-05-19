@@ -15,9 +15,9 @@ import com.bigdata.platform.scheduler.common.bean.tuple.Tuple3;
 import com.bigdata.platform.scheduler.common.exception.BizException;
 import com.bigdata.platform.scheduler.common.util.Assert;
 import com.bigdata.platform.scheduler.common.util.BeanUtil;
-import com.clubfactory.platform.meta.client.dto.TableOwnerDto;
-import com.clubfactory.platform.meta.client.service.MetaClientService;
-import com.clubfactory.platform.meta.client.utils.DbUtil;
+import com.bigdata.platform.meta.client.dto.TableOwnerDto;
+//import com.clubfactory.platform.meta.client.service.MetaClientService;
+import com.bigdata.platform.meta.client.utils.DbUtil;
 import com.bigdata.platform.scheduler.dal.enums.JobTypeEnum;
 import com.bigdata.platform.scheduler.dal.enums.TaskStatusEnum;
 import com.bigdata.platform.scheduler.dal.po.DqcRule;
@@ -52,8 +52,8 @@ import java.util.stream.Collectors;
 @Service
 public class DqcBizService {
 
-    @Resource
-    MetaClientService metaClientService;
+//    @Resource
+//    MetaClientService metaClientService;
     @Resource
     UserService userService;
     @Resource

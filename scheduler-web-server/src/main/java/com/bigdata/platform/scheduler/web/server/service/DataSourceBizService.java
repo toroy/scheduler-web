@@ -10,8 +10,8 @@ import com.bigdata.platform.scheduler.common.bean.PageUtils;
 import com.bigdata.platform.scheduler.common.exception.BizException;
 import com.bigdata.platform.scheduler.common.util.Assert;
 import com.bigdata.platform.scheduler.common.util.BeanUtil;
-import com.clubfactory.platform.meta.client.dto.TblUpdateDto;
-import com.clubfactory.platform.meta.client.service.MetaClientService;
+import com.bigdata.platform.meta.client.dto.TblUpdateDto;
+//import com.clubfactory.platform.meta.client.service.MetaClientService;
 import com.bigdata.platform.scheduler.dal.enums.CommonStatus;
 import com.bigdata.platform.scheduler.dal.enums.DbFeatureEnum;
 import com.bigdata.platform.scheduler.dal.enums.DbType;
@@ -87,8 +87,8 @@ public class DataSourceBizService {
     @Autowired
     private AESEncryptor aesEncryptor;
 
-    @Resource
-    MetaClientService metaClientService;
+//    @Resource
+//    MetaClientService metaClientService;
 
     @Autowired
     JobDetailBizService jobDetailBizService;
@@ -257,7 +257,7 @@ public class DataSourceBizService {
             oldDbHost = oldDbHost == null ? "" : oldDbHost;
             String newDbHost = RegexpUtils.extractDbServerHost(editDto.getDsUrl());
             if (!oldDbHost.equalsIgnoreCase(newDbHost)) {
-                metaClientService.updateTableInfo(new TblUpdateDto(oldDbHost, newDbHost));
+//                metaClientService.updateTableInfo(new TblUpdateDto(oldDbHost, newDbHost));
             }
         }
 

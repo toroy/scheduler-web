@@ -55,7 +55,7 @@ public class LoginBizService {
         return true;
     }
 
-    public String login(LoginUserDto userDto) {
+    public LoginUserDto login(LoginUserDto userDto) {
         Assert.notNull(userDto, "对象");
         Assert.notNull(userDto.getPassword(), "密码");
         Assert.nonNull(userDto.getUserid(), "账号");
@@ -72,8 +72,10 @@ public class LoginBizService {
         userDto.setLocalUserId(userVO.getId());
 
         String token = LoginUserUtils.getUniqueString();
+        userDto.setToken(token);
+
         LoginGuavaCacheUtil.put(token, userDto);
 
-        return token;
+        return userDto;
     }
 }

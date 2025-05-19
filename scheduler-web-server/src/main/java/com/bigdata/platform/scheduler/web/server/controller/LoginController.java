@@ -8,6 +8,7 @@ import com.bigdata.platform.scheduler.web.server.service.LoginBizService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -30,10 +31,15 @@ public class LoginController {
     }
 
     @PostMapping("login")
-    public BaseResult<String> login(@RequestBody LoginUserDto userDto, HttpServletResponse response) {
-        String token = loginBizService.login(userDto);
+    public BaseResult<LoginUserDto> login(@RequestBody LoginUserDto userDto, HttpServletResponse response) {
+        LoginUserDto loginUserDto = loginBizService.login(userDto);
+        saveCookie(loginUserDto.getToken(), response);
+        return new BaseResult<>(loginUserDto);
+    }
 
-        response.setHeader(Constants.TOKEN_KEY, token);
-        return new BaseResult<>(token);
+    public void saveCookie(String token, HttpServletResponse response) {
+        Cookie tokenCookie = new Cookie(Constants.TOKEN_KEY, token);
+        tokenCookie.setPath("/");
+        response.addCookie(tokenCookie);
     }
 }

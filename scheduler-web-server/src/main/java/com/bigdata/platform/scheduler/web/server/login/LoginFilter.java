@@ -14,6 +14,7 @@ import org.apache.http.HttpStatus;
 import org.springframework.core.env.Environment;
 
 import javax.servlet.*;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class LoginFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String token = request.getHeader(Constants.TOKEN_KEY);
+        String token = getTokenFromCookies(request, Constants.TOKEN_KEY);
 
         Environment env = SpringBean.getBean(Environment.class);
         List<String> profiles = Arrays.asList(env.getActiveProfiles());
@@ -101,6 +102,25 @@ public class LoginFilter implements Filter {
                 excludePathPatterns.add(path);
             }
         }
+    }
+
+    /**
+     * 从 HttpServletRequest 的 Cookie 中获取指定名称的 Token
+     *
+     * @param request HttpServletRequest 对象
+     * @param cookieName 要获取的 Cookie 名称（例如 "token"）
+     * @return Token 值，如果没有找到则返回 null
+     */
+    public static String getTokenFromCookies(HttpServletRequest request, String cookieName) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(cookieName)) {
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
     }
 
     private void getUserInfo(String userToken, TokenService tokenService) {

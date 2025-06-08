@@ -3,8 +3,8 @@ package test.mongodb;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.bigdata.platform.scheduler.web.core.jdbc.client.MongodbOperations;
-import com.bigdata.platform.scheduler.web.core.jdbc.client.PhoenixOperations;
+import com.zhugeio.platform.scheduler.web.core.jdbc.client.MongodbOperations;
+import com.zhugeio.platform.scheduler.web.core.jdbc.client.PhoenixOperations;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;

@@ -13,7 +13,7 @@
     <dubbo:protocol name="dubbo" port="20889"/>
     
      <!-- 和本地bean一样实现服务 -->
-  	<bean id="tableClientService" class="com.bigdata.platform.scheduler.web.server.provider.TableClientServiceImpl"/>
+  	<bean id="tableClientService" class="com.zhugeio.platform.scheduler.web.server.provider.TableClientServiceImpl"/>
      <!--声明需要暴露的服务接口 -->
-     <dubbo:service interface="com.bigdata.platform.scheduler.web.client.service.TableClientService" ref="tableClientService" timeout="30000" retries="3" />
+     <dubbo:service interface="com.zhugeio.platform.scheduler.web.client.service.TableClientService" ref="tableClientService" timeout="30000" retries="3" />
 </beans>

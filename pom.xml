@@ -4,7 +4,7 @@
 
 
     <name>scheduler-web</name>
-    <groupId>com.bigdata.platform</groupId>
+    <groupId>com.zhugeio.platform</groupId>
     <artifactId>scheduler-web</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -39,25 +39,25 @@
     <dependencyManagement>
         <dependencies>
         	<dependency>
-                <groupId>com.bigdata.platform</groupId>
+                <groupId>com.zhugeio.platform</groupId>
                 <artifactId>scheduler-web-client</artifactId>
                 <version>${web.client.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.bigdata.platform</groupId>
+                <groupId>com.zhugeio.platform</groupId>
                 <artifactId>scheduler-web-meta</artifactId>
                 <version>${web.client.version}</version>
             </dependency>
         
             <dependency>
-                <groupId>com.bigdata.platform</groupId>
+                <groupId>com.zhugeio.platform</groupId>
                 <artifactId>scheduler-client</artifactId>
                 <version>${scheduler.version}</version>
             </dependency>
 
             <dependency>
-				<groupId>com.bigdata.platform</groupId>
+				<groupId>com.zhugeio.platform</groupId>
 				<artifactId>scheduler-common</artifactId>
 				<version>${common.version}</version>
 			</dependency>
@@ -154,19 +154,19 @@
             </dependency>
 
             <dependency>
-                <groupId>com.bigdata.platform</groupId>
+                <groupId>com.zhugeio.platform</groupId>
                 <artifactId>scheduler-dal</artifactId>
                 <version>${dal.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.bigdata.platform</groupId>
+                <groupId>com.zhugeio.platform</groupId>
                 <artifactId>scheduler-web-core</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>com.bigdata.platform</groupId>
+                <groupId>com.zhugeio.platform</groupId>
                 <artifactId>scheduler-web-server</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
@@ -188,24 +188,6 @@
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>1.2.3</version>
             </dependency>
-
-<!--            <dependency>-->
-<!--                <groupId>com.clubfactory.boot</groupId>-->
-<!--                <artifactId>club-boot-starter-sso</artifactId>-->
-<!--                <version>1.1.20</version>-->
-<!--                <exclusions>-->
-<!--                    <exclusion>-->
-<!--                        <groupId>io.netty</groupId>-->
-<!--                        <artifactId>netty</artifactId>-->
-<!--                    </exclusion>-->
-<!--                    <exclusion>-->
-<!--                        <artifactId>javax.servlet-api</artifactId>-->
-<!--                        <groupId>javax.servlet</groupId>-->
-<!--                    </exclusion>-->
-<!--                </exclusions>-->
-<!--            </dependency>-->
-            <!-- <dependency> <groupId>com.alibaba</groupId> <artifactId>druid</artifactId>
-                <version>1.1.19</version> </dependency> -->
 
             <dependency>
                 <groupId>org.postgresql</groupId>

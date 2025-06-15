@@ -72,4 +72,11 @@ public class LoginBizService {
 
         return userDto;
     }
+
+    public void logout(String token) {
+        if (StringUtils.isBlank(token)) {
+            return;
+        }
+        LoginGuavaCacheUtil.clear(token);
+    }
 }

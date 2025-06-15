@@ -38,20 +38,6 @@ public class UserController {
 		return new BaseResult<UserInfoVo>(userInfoVo);
 	}
 
-	@GetMapping("logout")
-	public void logout(HttpServletResponse response) throws IOException {
-		// 告诉前端成功，由前端进行跳转
-		response.setStatus(HttpStatus.SC_OK);
-		response.setContentType("application/json;charset=UTF-8");
-		BaseResult<Boolean> result = new BaseResult<Boolean>();
-		result.setBody(true);
-		response.getWriter().write(JSON.toJSONString(result));
-		// 跳转到sso登录页
-		//String requestUrl = String.format(SSO_LOGIN, StringUtils.removeEnd(request.getRequestURL().toString(), request.getRequestURI().toString()));
-		//response.sendRedirect(requestUrl);
-		return;
-	}
-
 
 	@GetMapping("listByName")
 	public BaseResult<Map<String, List<UserVO>>> listByName(String name) {

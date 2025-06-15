@@ -7,6 +7,7 @@ import com.bigdata.platform.scheduler.web.core.service.UserService;
 import com.bigdata.platform.scheduler.web.core.utils.LoginGuavaCacheUtil;
 import com.bigdata.platform.scheduler.web.core.utils.SpringBean;
 import com.bigdata.platform.scheduler.web.core.vo.UserVO;
+import com.bigdata.platform.scheduler.web.server.utils.HttpUtils;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -37,7 +38,7 @@ public class LoginFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String token = getTokenFromCookies(request, Constants.TOKEN_KEY);
+        String token = HttpUtils.getTokenFromCookies(request, Constants.TOKEN_KEY);
 
         Environment env = SpringBean.getBean(Environment.class);
         List<String> profiles = Arrays.asList(env.getActiveProfiles());
@@ -102,25 +103,6 @@ public class LoginFilter implements Filter {
                 excludePathPatterns.add(path);
             }
         }
-    }
-
-    /**
-     * 从 HttpServletRequest 的 Cookie 中获取指定名称的 Token
-     *
-     * @param request HttpServletRequest 对象
-     * @param cookieName 要获取的 Cookie 名称（例如 "token"）
-     * @return Token 值，如果没有找到则返回 null
-     */
-    public static String getTokenFromCookies(HttpServletRequest request, String cookieName) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals(cookieName)) {
-                    return cookie.getValue();
-                }
-            }
-        }
-        return null;
     }
 
     private void getUserInfo(String userToken, TokenService tokenService) {

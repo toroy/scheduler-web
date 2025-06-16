@@ -214,6 +214,8 @@ public interface Constants {
      */
     int maxScriptSize = 1024 * 1024 * 1024;
 
+    int maxFileParamSize = 1024 * 1024 * 1024;
+
     /**
      * 手机号脱敏字符
      */

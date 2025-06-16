@@ -12,8 +12,9 @@ import com.zhugeio.platform.scheduler.web.core.vo.UserVO;
 import com.google.common.collect.Lists;
 
 import com.zhugeio.platform.scheduler.web.server.utils.HttpUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.dubbo.common.utils.CollectionUtils;
+
 import org.apache.http.HttpStatus;
 import org.springframework.core.env.Environment;
 

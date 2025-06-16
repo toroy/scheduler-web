@@ -31,8 +31,8 @@ import com.google.common.collect.Maps;
 public class PostgresqlOperations extends BaseOperations implements Operations {
 
 	private String SHOW_TABLE_SQL = "SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';";
-	private String SHOW_TABLE_DESC_SQL = "select relname,description from pg_description\n" + 
-			"join pg_class on pg_description.objoid = pg_class.oid\n" + 
+	private String SHOW_TABLE_DESC_SQL = "select relname,description from pg_description\n" +
+			"join pg_class on pg_description.objoid = pg_class.oid\n" +
 			"where  objsubid = 0;";
 	private String SHOW_COLUMNS_SQL = "select col_description(a.attrelid,a.attnum) as comment, a.attname AS field,t.typname AS type from pg_class c,pg_attribute a,pg_type t where c.relname = '%s' and a.attnum > 0 and a.attrelid = c.oid and a.atttypid = t.oid ORDER BY a.attnum;";
 	

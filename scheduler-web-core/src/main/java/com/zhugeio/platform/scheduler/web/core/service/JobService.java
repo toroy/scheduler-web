@@ -199,6 +199,22 @@ public class JobService extends BaseNewService<JobVO,Job> {
 		this.edit(job);
 		return true;
 	}
+
+	public Boolean editRedoingByFileParamId(Long fileParamId, Long userId) {
+		Assert.notNull(fileParamId);
+		Assert.notNull(userId);
+
+		Job job = new Job();
+		job.setIsDeleted(false);
+		job.setScriptId(fileParamId);
+
+		Map<String, Object> updateParam = Maps.newHashMap();
+		updateParam.put("status", JobStatusEnum.DOING);
+		updateParam.put("update_user", userId);
+		job.setUpdateParam(updateParam);
+		this.edit(job);
+		return true;
+	}
 	
 	
 	public Boolean editPause(List<Long> ids,  Long userId) {

@@ -39,6 +39,16 @@ public class ChangeDto implements Serializable {
 	 * 移交的脚本类别，不传就是移交所有脚本
 	 */
 	private List<Long> scriptIds;
+
+	/**
+	 * 是否移交全部脚本
+	 */
+	private Boolean isFileParam;
+
+	/**
+	 * 移交的脚本类别，不传就是移交所有脚本
+	 */
+	private List<Long> fileParamIds;
 	
 	/**
 	 * 是否移交全部项目

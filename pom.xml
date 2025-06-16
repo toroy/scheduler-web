@@ -500,6 +500,12 @@
                 <version>${hive.jdbc.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>4.4</version>
+            </dependency>
+
 
             <!--HDFS相关依赖-->
             <dependency>

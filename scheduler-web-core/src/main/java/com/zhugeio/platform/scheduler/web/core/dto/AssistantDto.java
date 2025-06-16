@@ -17,6 +17,6 @@ public class AssistantDto implements Serializable {
 	/**
 	 * 脚本id
 	 */
-	private Long scriptId; 
+	private Long scriptId;
 	
 }

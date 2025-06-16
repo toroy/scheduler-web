@@ -181,7 +181,7 @@ public class JobCheckBizService {
 				task.setPriority(job.getPriority());
 			}
 			
-			if (task.getScriptId() != null 
+			if (task.getScriptId() != null
 					|| task.getType() != null 
 					|| task.getMachineId() != null 
 					|| task.getPriority() != null) {

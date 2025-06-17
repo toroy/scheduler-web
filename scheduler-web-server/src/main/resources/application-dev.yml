@@ -1,0 +1,107 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: net.sf.log4jdbc.DriverSpy
+      web-stat-filter:
+        enabled: false
+   # url: jdbc:log4jdbc:mysql://127.0.0.1:3306/scheduler_dev
+   # username: root
+   # password: 123456
+    url: jdbc:log4jdbc:mysql://117.50.245.35:3306/scheduler
+    username: zg
+    password: zg123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  #上传限制文件大小
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+club-boot:
+   server:
+      env: test
+
+server:
+  port: 8082
+  
+zookeeper:
+  quorum: 117.50.245.35:2181
+  
+logging:
+  path: ./logs
+  level: 
+    root: info
+
+#python3执行路径
+python3:
+  path:
+    exec: /usr/local/bin/python3
+
+
+## 公共配置
+data:
+  upload:
+    basedir:
+      path: /tmp/scheduler/upload
+  download:
+    basedir:
+      path: /tmp/scheduler/download
+  storage:
+    dfs:
+      base-path: /data_platform/scheduler-data
+
+
+fs:
+  defaultFS: hdfs://10.60.156.93:9000/
+  s3a:
+    endpoint: s3.us-west-2.amazonaws.com
+    access:
+      key:
+    secret:
+      key:
+    connection:
+      maximum: 100
+      establish:
+        timeout: 5000 # 单位:ms
+      timeout: 200000 # 单位:ms
+    attempts:
+      maximum: 20
+    threads:
+      max: 10
+      keepalivetime: 60 #单位：s
+  oss:
+    endpoint:
+    access-key-id:
+    access-key-secret:
+    security-token:
+    multipart:
+      download:
+        size:           # 102400
+
+
+hadoop:
+  kerberos:
+    authentication:
+      enable: false
+
+java:
+  security:
+    krb5:
+      conf:
+        path: /etc/krb5.conf
+login:
+  user:
+    keytab:
+      username: hdfs@EMR.COM
+      path: /opt/hdfs.keytab
+
+scheduler:
+  env:
+    path:
+
+dqc:
+  log-url:
+    base-path:
+
+  
+    

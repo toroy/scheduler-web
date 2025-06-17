@@ -1,0 +1,87 @@
+spring:
+  application:
+    name: scheduler-web
+  profiles:
+    active:
+    -  '@profileActive@'
+  datasource:
+    continue-on-error: true
+    druid:
+      filter:
+        config:
+          enabled: true
+      connection-init-sqls: set names utf8mb4
+      max-pool-prepared-statement-per-connection-size: 20
+      initial-size: 5
+      min-idle: 1
+      max-active: 50
+      max-wait: 600000 
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+server:
+  tomcat:
+    uri-encoding: UTF-8
+
+
+## task被调度到被执行中间允许的延迟时间，单位：分钟
+task:
+  logger:
+    server:
+      port: 50051
+  log:
+    expire:
+      days: 8   # 日志过期天数（保留天数）
+      clear:
+        cron: "0 30 0 1/1 * ?"
+
+## 每天定时刷新团队列表
+### 团队获取接口文档：http://wiki.yuceyi.com/pages/viewpage.action?pageId=27206886
+team:
+  list:
+    poll:
+      cron: "0 15 0 1/1 * ?"
+      address: http://msg.inner-yuceyi.com/cf-wechat/get-department
+      app-id: "06029"
+      search-ids: "112,5"
+
+        
+
+    
+## mybatis
+mybatis:
+  config-location: classpath:mybatis/mybatis.xml
+  mapper-locations: classpath*:mybatis/mapper/**/*.xml
+  
+
+pagehelper:
+    helperDialect: mysql
+
+
+db:
+  conn:
+    test:
+      timeout: 10   #单位：秒
+  encrypt:
+    secret-key: clubfactory-jiayun
+
+
+## 脚本资源保存
+dfs:
+  super:
+    user: ubuntu
+resource:
+  upload:
+    suffixes: txt,log,sh,cfg,py,java,sql,hql,xml,properties,jar,zip,json,whl
+  view:
+    suffixes: txt,log,sh,cfg,py,java,sql,hql,xml,properties,json
+  storage:
+    dfs:
+      # HDFS,S3,OSS
+      type: HDFS
+  
+  
+  
+    

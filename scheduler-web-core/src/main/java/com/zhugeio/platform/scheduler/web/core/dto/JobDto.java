@@ -37,6 +37,16 @@ public class JobDto extends JobVO {
 	private CollectDb targetDb;
 	
 	private List<ParamContent> sysParams;
+
+	private List<FileParamsContent> fileParams;
+
+	@Data
+	public static class FileParamsContent implements Serializable {
+
+		private String key;
+
+		private Long id;
+	}
 	
 	@Data
 	public static class ParamContent implements Serializable {

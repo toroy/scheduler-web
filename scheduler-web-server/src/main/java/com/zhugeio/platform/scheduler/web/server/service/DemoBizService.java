@@ -2,6 +2,7 @@ package com.zhugeio.platform.scheduler.web.server.service;
 
 import javax.annotation.Resource;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,12 +29,6 @@ public class DemoBizService {
     	Demo demo = new Demo();
     	demo.setName("test");
     	demoService.save(demo);
-    	
-    	if (true) {
-    		throw new BizException("test");
-    	}
-    	
-    	
-    	demoService.save(demo);
+		System.out.println(JSON.toJSONString(demo));
 	}
 }

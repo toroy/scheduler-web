@@ -41,6 +41,7 @@ public class JobCalDto extends JobDto {
 				.append(", clusterId=").append(getClusterId())
 				.append(", argsParam=").append(getArgsParam())
 				.append(", sysParams=").append(JSON.toJSONString(getSysParams()))
+				.append(", fileParams=").append(getFileParams())
 				.append(", scriptId=").append(getScriptId())
 				.append(", projectId=").append(getProjectId())
 				.append(", cycleType=").append(getCycleType())

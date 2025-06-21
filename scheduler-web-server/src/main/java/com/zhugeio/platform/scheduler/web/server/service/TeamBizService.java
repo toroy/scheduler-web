@@ -59,6 +59,7 @@ public class TeamBizService {
             Team team = new Team();
             team.setDepartId(-1);
             team.setDepartName("公共");
+            team.setIsDeleted(false);
             teams.add(team);
             try {
                 teamService.saveBatch(teams);

@@ -46,33 +46,37 @@ public class LoginBizService {
         String departName = userDto.getDepartName().trim();
         Integer departId = departName.hashCode();
 
-        saveUser(userDto, departId);
+        Long userId = saveUser(userDto, departId, departName);
 
-        saveTeam(departId, departName);
+        saveTeam(departId, departName, userId);
 
         return true;
     }
 
-    private void saveTeam(Integer departId, String departName) {
+    private void saveTeam(Integer departId, String departName, Long userId) {
         Team team = new Team();
         team.setDepartId(departId);
         team.setDepartName(departName);
+        team.setIsDeleted(false);
+        team.setCreateUser(userId);
+        team.setUpdateUser(userId);
         Team teamRes = teamService.get(team);
         if (teamRes == null) {
             teamService.save(team);
         }
     }
 
-    private void saveUser(LoginUserDto userDto, Integer departId) {
+    private Long saveUser(LoginUserDto userDto, Integer departId, String departName) {
         User user = new User();
         user.setPassword(Utils.md5(userDto.getPassword().trim()));
         user.setUid(userDto.getUserid().trim());
         user.setAlias(userDto.getAlias() != null ? userDto.getAlias().trim() : userDto.getUserid().trim());
-        user.setDepartName(userDto.getDepartName().trim());
+        user.setDepartName(departName);
         user.setDepartId(departId);
         user.setName(userDto.getName().trim());
         user.setIsAdmin(false);
-        userService.save(user);
+        User userRes = userService.save(user);
+        return userRes.getId();
     }
 
     public LoginUserDto login(LoginUserDto userDto) {

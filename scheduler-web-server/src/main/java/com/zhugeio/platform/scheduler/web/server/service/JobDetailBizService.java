@@ -908,8 +908,8 @@ public class JobDetailBizService {
 		if (StringUtils.isNotBlank(job.getParams())) {
 			jobVo.setSysParams(JSON.parseArray(job.getParams(), ParamContent.class));
 		}
-		if (StringUtils.isNotBlank(job.getFileParams())) {
-			jobVo.setFileParams(JSON.parseArray(job.getFileParams(), JobDto.FileParamsContent.class));
+		if (StringUtils.isNotBlank(job.getFileParamsJson())) {
+			jobVo.setFileParams(JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class));
 		}
 		BeanUtil.copyBeanNotNull2Bean(job, jobVo);
 		return jobVo;

@@ -182,10 +182,10 @@ public class MachineService extends BaseNewService<MachineVO,Machine> {
 		if (editDto.getFunctions() != null){
 			if (editDto.getMachineType() == null){
 				if ((vo != null && MachineTypeEnum.WORKER == vo.getType())){
-					updateParams.put("functions",editDto.getFunctions());
+					updateParams.put("`functions`",editDto.getFunctions());
 				}
 			}else if (editDto.getMachineType() == MachineTypeEnum.WORKER ) {
-				updateParams.put("functions", editDto.getFunctions());
+				updateParams.put("`functions`", editDto.getFunctions());
 			}
 		}
 		if (isDelete){

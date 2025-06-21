@@ -119,13 +119,13 @@ public class JobCheckBizService {
             autoUserDto.setLocalUserId(-1L);
             autoUserDto.setIsAdmin(true);
 
-            executor.submit(new Runnable() {
+            //executor.submit(new Runnable() {
                 JobCheckBizService jobCheckBizService = SpringBean.getBean(JobCheckBizService.class);
-                @Override
-                public void run() {
+              //  @Override
+              //  public void run() {
                     jobCheckBizService.editSuccessByJobIds(autoJobIds, autoUserDto);
-                }
-            });
+              //  }
+           // });
         }
     }
 

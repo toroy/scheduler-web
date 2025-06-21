@@ -38,7 +38,7 @@ public class JobDto extends JobVO {
 	
 	private List<ParamContent> sysParams;
 
-	private List<FileParamsContent> fileParamsContents;
+	private List<FileParamsContent> fileParams;
 
 	@Data
 	public static class FileParamsContent implements Serializable {

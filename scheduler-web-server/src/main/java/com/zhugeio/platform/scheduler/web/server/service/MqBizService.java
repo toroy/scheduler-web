@@ -510,7 +510,7 @@ public class MqBizService {
 		jobDto.setStorageFormat(FormatEnum.ORC);
 		jobDto.setType(SPARK_STREAMING);
 		jobDto.setSysParams(Lists.newArrayList());
-		jobDto.setFileParamsContents(Lists.newArrayList());
+		jobDto.setFileParams(Lists.newArrayList());
 		jobDto.setMainClass(SysConfigUtil.getByKey(SysConfigConstant.MQ_JOB_MAIN_CLASS));
 		jobDto.setDeployMode(DeployModeEnum.CLUSTER);
 		jobDto.setProgramType(ProgramTypeEnum.JAVA);

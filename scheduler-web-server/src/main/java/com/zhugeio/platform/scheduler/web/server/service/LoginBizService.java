@@ -4,7 +4,9 @@ import com.alibaba.druid.util.Utils;
 import com.zhugeio.platform.scheduler.common.exception.BizException;
 import com.zhugeio.platform.scheduler.common.util.Assert;
 import com.zhugeio.platform.scheduler.common.util.BeanUtil;
+import com.zhugeio.platform.scheduler.dal.po.Team;
 import com.zhugeio.platform.scheduler.dal.po.User;
+import com.zhugeio.platform.scheduler.web.core.service.TeamService;
 import com.zhugeio.platform.scheduler.web.core.service.UserService;
 import com.zhugeio.platform.scheduler.web.core.utils.LoginGuavaCacheUtil;
 import com.zhugeio.platform.scheduler.web.core.vo.UserVO;
@@ -28,25 +30,49 @@ public class LoginBizService {
 
     @Resource
     UserService  userService;
+    @Resource
+    TeamService teamService;
     public Boolean register(LoginUserDto userDto) {
         Assert.notNull(userDto, "对象");
         Assert.notNull(userDto.getPassword(), "密码");
         Assert.nonNull(userDto.getUserid(), "账号");
+        Assert.nonNull(userDto.getDepartName(), "部门");
 
         UserVO userVO = userService.getUserInfoByUid(userDto.getUserid().trim());
         if (userVO != null) {
             throw new BizException("用户名已注册");
         }
 
+        String departName = userDto.getDepartName().trim();
+        Integer departId = departName.hashCode();
+
+        saveUser(userDto, departId);
+
+        saveTeam(departId, departName);
+
+        return true;
+    }
+
+    private void saveTeam(Integer departId, String departName) {
+        Team team = new Team();
+        team.setDepartId(departId);
+        team.setDepartName(departName);
+        Team teamRes = teamService.get(team);
+        if (teamRes == null) {
+            teamService.save(team);
+        }
+    }
+
+    private void saveUser(LoginUserDto userDto, Integer departId) {
         User user = new User();
         user.setPassword(Utils.md5(userDto.getPassword().trim()));
         user.setUid(userDto.getUserid().trim());
         user.setAlias(userDto.getAlias() != null ? userDto.getAlias().trim() : userDto.getUserid().trim());
         user.setDepartName(userDto.getDepartName().trim());
+        user.setDepartId(departId);
         user.setName(userDto.getName().trim());
         user.setIsAdmin(false);
         userService.save(user);
-        return true;
     }
 
     public LoginUserDto login(LoginUserDto userDto) {

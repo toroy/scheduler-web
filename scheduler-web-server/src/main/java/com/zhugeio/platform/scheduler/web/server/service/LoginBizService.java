@@ -58,10 +58,10 @@ public class LoginBizService {
         team.setDepartId(departId);
         team.setDepartName(departName);
         team.setIsDeleted(false);
-        team.setCreateUser(userId);
-        team.setUpdateUser(userId);
         Team teamRes = teamService.get(team);
         if (teamRes == null) {
+            team.setCreateUser(userId);
+            team.setUpdateUser(userId);
             teamService.save(team);
         }
     }

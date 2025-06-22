@@ -248,10 +248,10 @@ public class JobCheckBizService {
 
 	private String genFileParamPath(String fileParamsJson) {
 		List<JobDto.FileParamsContent> fileParams = JSON.parseArray(fileParamsJson, JobDto.FileParamsContent.class);
-		List<Long> fileParamIds = fileParams.stream().map(JobDto.FileParamsContent::getId).distinct().collect(Collectors.toList());
+		List<Long> fileParamIds = fileParams.stream().map(JobDto.FileParamsContent::getValue).distinct().collect(Collectors.toList());
 		Map<Long, String> fileParamPathMap = fileParamService.getBasePathMap(fileParamIds);
 		for (JobDto.FileParamsContent fileParam : fileParams) {
-			fileParam.setPath(fileParamPathMap.get(fileParam.getId()));
+			fileParam.setPath(fileParamPathMap.get(fileParam.getValue()));
 		}
 		return JSON.toJSONString(fileParams);
 	}

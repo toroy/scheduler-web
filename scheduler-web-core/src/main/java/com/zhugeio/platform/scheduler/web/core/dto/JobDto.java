@@ -43,9 +43,9 @@ public class JobDto extends JobVO {
 	@Data
 	public static class FileParamsContent implements Serializable {
 
-		private String key;
+		private String name;
 
-		private Long id;
+		private Long value;
 
 		private String path;
 	}

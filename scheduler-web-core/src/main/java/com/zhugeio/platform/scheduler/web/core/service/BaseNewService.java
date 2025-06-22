@@ -123,8 +123,10 @@ public class BaseNewService<V extends P, P extends BasePO> {
             return -1;
         }
         List<P> poList = Lists.newArrayListWithCapacity(list.size());
+        SnowflakeIdGenerator idGenerator = new SnowflakeIdGenerator(0, 0);
         for (P po : list) {
             //初始化插入时间，更新时间
+            po.setId(idGenerator.generate12DigitId());
         	po.initCreate();
             poList.add(po);
         }

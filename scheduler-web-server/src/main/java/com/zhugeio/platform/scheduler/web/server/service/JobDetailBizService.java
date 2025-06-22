@@ -921,6 +921,10 @@ public class JobDetailBizService {
 		if (StringUtils.isNotBlank(job.getParams())) {
 			jobDto.setSysParams(JSON.parseArray(job.getParams(), ParamContent.class));
 		}
+		if (StringUtils.isNotBlank(job.getFileParamsJson())) {
+			jobDto.setFileParams(JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class));
+		}
+
 		BeanUtil.copyBeanNotNull2Bean(job, jobDto);
 	}
 

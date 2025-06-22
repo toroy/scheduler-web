@@ -16,6 +16,8 @@ public class JobOnlineDto extends JobOnline {
 	private static final long serialVersionUID = 4245648698919810865L;
 
 	private List<ParamContent> sysParams;
+
+	private List<JobDto.FileParamsContent> fileParams;
 	
 	private List<AlarmDto> alarms;
 	

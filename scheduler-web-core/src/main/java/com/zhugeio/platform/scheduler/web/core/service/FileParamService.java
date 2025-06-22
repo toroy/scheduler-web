@@ -1,5 +1,6 @@
 package com.zhugeio.platform.scheduler.web.core.service;
 
+import com.google.common.base.Functions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.zhugeio.platform.scheduler.common.exception.BizException;
@@ -213,12 +214,12 @@ public class FileParamService extends BaseNewService<FileParamVO, FileParam> {
 		return this.list(fileParam);
 	}
 
-	public Map<Long, String> getBasePathMap(List<Long> ids) {
+	public Map<Long, FileParamVO> getBasePathMap(List<Long> ids) {
 		List<FileParamVO> fileParamVOS = listByIds(ids);
 		if (CollectionUtils.isEmpty(fileParamVOS)) {
 			return Maps.newHashMap();
 		}
-		return fileParamVOS.stream().collect(Collectors.toMap(FileParamVO::getId, FileParamVO::getFileParamBasePath, (s1, s2) -> s2));
+		return fileParamVOS.stream().collect(Collectors.toMap(FileParamVO::getId, Functions.identity(), (s1, s2) -> s2));
 	}
 	
 	public List<FileParamVO> listByIds(List<Long> ids) {

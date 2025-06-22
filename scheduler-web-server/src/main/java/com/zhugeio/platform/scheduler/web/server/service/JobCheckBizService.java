@@ -2,6 +2,7 @@ package com.zhugeio.platform.scheduler.web.server.service;
 
 import com.alibaba.fastjson.JSON;
 import com.zhugeio.platform.scheduler.web.core.dto.JobDto;
+import com.zhugeio.platform.scheduler.web.core.vo.FileParamVO;
 import com.zhugeio.platform.scheduler.web.server.login.LoginUserDto;
 import com.zhugeio.platform.scheduler.common.exception.BizException;
 import com.zhugeio.platform.scheduler.common.util.Assert;
@@ -249,9 +250,14 @@ public class JobCheckBizService {
 	private String genFileParamPath(String fileParamsJson) {
 		List<JobDto.FileParamsContent> fileParams = JSON.parseArray(fileParamsJson, JobDto.FileParamsContent.class);
 		List<Long> fileParamIds = fileParams.stream().map(JobDto.FileParamsContent::getValue).distinct().collect(Collectors.toList());
-		Map<Long, String> fileParamPathMap = fileParamService.getBasePathMap(fileParamIds);
+		Map<Long, FileParamVO> fileParamPathMap = fileParamService.getBasePathMap(fileParamIds);
 		for (JobDto.FileParamsContent fileParam : fileParams) {
-			fileParam.setPath(fileParamPathMap.get(fileParam.getValue()));
+			FileParamVO fileParamVO = fileParamPathMap.get(fileParam.getValue());
+			if (fileParamVO == null) {
+				continue;
+			}
+			fileParam.setPath(fileParamVO.getFileParamBasePath());
+			fileParam.setTitle(fileParamVO.getFileParamName());
 		}
 		return JSON.toJSONString(fileParams);
 	}

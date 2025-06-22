@@ -48,6 +48,8 @@ public class JobDto extends JobVO {
 		private Long value;
 
 		private String path;
+
+		private String title;
 	}
 	
 	@Data

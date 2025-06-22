@@ -2,6 +2,7 @@ package com.zhugeio.platform.scheduler.web.server.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.zhugeio.platform.scheduler.web.core.vo.FileParamVO;
 import com.zhugeio.platform.scheduler.web.server.login.LoginUserDto;
 import com.zhugeio.platform.scheduler.web.server.utils.AESEncryptor;
 import com.zhugeio.platform.scheduler.web.server.vo.ColumnsVo;
@@ -87,6 +88,8 @@ public class JobDetailBizService {
 	UserInfoBizService userInfoBizService;
 	@Resource
 	DqcRuleBizService dqcRuleBizService;
+	@Resource
+	FileParamService fileParamService;
 
 	@Resource
 	AESEncryptor aesEncryptor;
@@ -909,7 +912,17 @@ public class JobDetailBizService {
 			jobVo.setSysParams(JSON.parseArray(job.getParams(), ParamContent.class));
 		}
 		if (StringUtils.isNotBlank(job.getFileParamsJson())) {
-			jobVo.setFileParams(JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class));
+			List<JobDto.FileParamsContent> fileParams = JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class);
+			List<Long> fileParamIds = fileParams.stream().map(JobDto.FileParamsContent::getValue).distinct().collect(Collectors.toList());
+			Map<Long, FileParamVO> fileParamPathMap = fileParamService.getBasePathMap(fileParamIds);
+			for (JobDto.FileParamsContent fileParam : fileParams) {
+				FileParamVO fileParamVO = fileParamPathMap.get(fileParam.getValue());
+				if (fileParamVO == null) {
+					continue;
+				}
+				fileParam.setTitle(fileParamVO.getFileParamName());
+			}
+			jobVo.setFileParams(fileParams);
 		}
 		BeanUtil.copyBeanNotNull2Bean(job, jobVo);
 		return jobVo;

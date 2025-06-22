@@ -120,7 +120,7 @@ public class FileParamBizService {
             throw new BizException(String.format("当前只支持上传以下类型的文件: %s",String.join(",",allowUploadList)));
         }
 
-        String dfsResourcePath = DFSUtils.getDfsResDir(userDir);
+        String dfsResourcePath = DFSUtils.getDfsParamTenantResDir(userDir);
         // 脚本记录入库
         FileParam fileParam = new FileParam();
         fileParam.setCreateUser(createUser);
@@ -772,7 +772,7 @@ public class FileParamBizService {
             String userDir =  String.format("%s_%s",username,userId);
             Integer fileParamVersion = 1;
 
-            String dfsFileBasePath = DFSUtils.getDfsResDir(userDir);
+            String dfsFileBasePath = DFSUtils.getDfsParamTenantResDir(userDir);
             String dfsFileName = String.format("%s_%s",fileName,fileParamVersion);
             String dfsFilePath = DFSUtils.getDfsFilePath(dfsFileBasePath, dfsFileName);
             try {

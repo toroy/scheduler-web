@@ -212,6 +212,14 @@ public class FileParamService extends BaseNewService<FileParamVO, FileParam> {
 		fileParam.setCreateUser(userId);
 		return this.list(fileParam);
 	}
+
+	public Map<Long, String> getBasePathMap(List<Long> ids) {
+		List<FileParamVO> fileParamVOS = listByIds(ids);
+		if (CollectionUtils.isEmpty(fileParamVOS)) {
+			return Maps.newHashMap();
+		}
+		return fileParamVOS.stream().collect(Collectors.toMap(FileParamVO::getId, FileParamVO::getFileParamBasePath, (s1, s2) -> s2));
+	}
 	
 	public List<FileParamVO> listByIds(List<Long> ids) {
 		if (CollectionUtils.isEmpty(ids)) {

@@ -45,6 +45,7 @@ data:
   storage:
     dfs:
       base-path: /data_platform/scheduler-data-test
+      file-param-path: /data_platform/scheduler-param-test
 
 fs:
   defaultFS: hdfs://10.60.156.93:9000/

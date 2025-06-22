@@ -54,6 +54,9 @@ public class CommonProperties {
     @Value("${data.storage.dfs.base-path}")
     private String dfsStorageBaseDir;
 
+    @Value("${data.storage.dfs.file-param-path}")
+    private String dfsStorageFileParamDir;
+
     @Value("${fs.defaultFS}")
     private String defaultFS;
 
@@ -214,6 +217,10 @@ public class CommonProperties {
         return dfsStorageBaseDir;
     }
 
+    public String getDfsStorageFileParamDir() {
+        return dfsStorageFileParamDir;
+    }
+
     public String getDefaultFS() {
         return defaultFS;
     }
@@ -301,6 +308,7 @@ public class CommonProperties {
         props.put(Constants.RESOURCE_STORAGE_DFS_TYPE,getResStorageFSType());
         props.put(Constants.DFS_SUPER_USER,getDfsSuperUser());
         props.put(Constants.DATA_STORAGE_DFS_BASE_PATH,getDfsStorageBaseDir());
+        props.put(Constants.DATA_STORAGE_DFS_FILE_PARAM_PATH,getDfsStorageFileParamDir());
         props.put(Constants.FS_DEFAULT_FS,getDefaultFS());
         props.put(Constants.FS_S3A_ENDPOINT,getS3aEndpoint());
         props.put(Constants.FS_S3A_ACCESS_KEY,getS3aAccessKey());

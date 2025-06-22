@@ -42,6 +42,7 @@ data:
   storage:
     dfs:
       base-path: /data_platform/scheduler-data
+      file-param-path: /data_platform/scheduler-param
 
 
 fs:

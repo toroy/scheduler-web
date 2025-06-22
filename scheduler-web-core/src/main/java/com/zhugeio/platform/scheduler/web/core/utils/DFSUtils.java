@@ -41,6 +41,7 @@ public class DFSUtils implements Closeable {
         }
         init();
         initDFSPath();
+        initDFSFileParamPath();
     }
 
     public static DFSUtils getInstance(){
@@ -56,6 +57,19 @@ public class DFSUtils implements Closeable {
      */
     private void initDFSPath(){
         String dfsPath = PropertyUtils.getString(Constants.DATA_STORAGE_DFS_BASE_PATH);
+        Path path = new Path(dfsPath);
+
+        try {
+            if (!fs.exists(path)) {
+                fs.mkdirs(path);
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage(),e);
+        }
+    }
+
+    private void initDFSFileParamPath(){
+        String dfsPath = PropertyUtils.getString(Constants.DATA_STORAGE_DFS_FILE_PARAM_PATH);
         Path path = new Path(dfsPath);
 
         try {
@@ -370,14 +384,21 @@ public class DFSUtils implements Closeable {
         return fs.rename(new Path(src), new Path(dst));
     }
 
-
-
     /**
      *
      * @return data dfs path
      */
     public static String getDfsDataBasePath() {
         String basePath = PropertyUtils.getString(Constants.DATA_STORAGE_DFS_BASE_PATH);
+        return "/".equals(basePath) ? "" : basePath;
+    }
+
+    /**
+     *
+     * @return data dfs path
+     */
+    public static String getDfsFileParamPath() {
+        String basePath = PropertyUtils.getString(Constants.DATA_STORAGE_DFS_FILE_PARAM_PATH);
         return "/".equals(basePath) ? "" : basePath;
     }
 
@@ -389,6 +410,10 @@ public class DFSUtils implements Closeable {
      */
     public static String getDfsResDir(String userDir) {
         return String.format("%s/resources", getDfsTenantDir(userDir));
+    }
+
+    public static String getDfsParamTenantResDir(String userDir) {
+        return String.format("%s/resources", getDfsFileParamTenantDir(userDir));
     }
 
     /**
@@ -438,6 +463,10 @@ public class DFSUtils implements Closeable {
      */
     public static String getDfsTenantDir(String tenantCode) {
         return String.format("%s/%s", getDfsDataBasePath(), tenantCode);
+    }
+
+    public static String getDfsFileParamTenantDir(String tenantCode) {
+        return String.format("%s/%s", getDfsFileParamPath(), tenantCode);
     }
 
 

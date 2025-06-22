@@ -117,7 +117,7 @@ public class JobService extends BaseNewService<JobVO,Job> {
     	job.setStatus(jobDto.getStatus() != null ? jobDto.getStatus() : JobStatusEnum.DOING);
     	job.setSchedulerTimeDto(jobDto.getSchedulerTimeDto());
     	job.setParams(JSON.toJSONString(jobDto.getSysParams()));
-		job.setFileParams(JSON.toJSONString(jobDto.getFileParams()));
+		job.setFileParamsJson(JSON.toJSONString(jobDto.getFileParams()));
     	job.setGroupId(job.getGroupId());
     	job.setProjectId(job.getProjectId());
     	job.setRunOnTmpEmr(jobDto.getRunOnTmpEmr());
@@ -146,7 +146,7 @@ public class JobService extends BaseNewService<JobVO,Job> {
     	updateParam.put("machine_id", jobDto.getMachineId());
     	updateParam.put("args_param", jobDto.getArgsParam());
     	updateParam.put("params", JSON.toJSONString(jobDto.getSysParams()));
-		updateParam.put("fileParams", JSON.toJSONString(jobDto.getFileParams()));
+		updateParam.put("file_Params_json", JSON.toJSONString(jobDto.getFileParams()));
     	updateParam.put("name", jobDto.getName());
     	updateParam.put("cycle_type", jobDto.getCycleType());
     	updateParam.put("main_class", jobDto.getMainClass());

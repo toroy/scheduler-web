@@ -46,6 +46,8 @@ public class JobDto extends JobVO {
 		private String key;
 
 		private Long id;
+
+		private String path;
 	}
 	
 	@Data

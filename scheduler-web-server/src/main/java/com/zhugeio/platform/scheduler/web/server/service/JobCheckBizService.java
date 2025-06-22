@@ -1,6 +1,7 @@
 package com.zhugeio.platform.scheduler.web.server.service;
 
 import com.alibaba.fastjson.JSON;
+import com.zhugeio.platform.scheduler.web.core.dto.JobDto;
 import com.zhugeio.platform.scheduler.web.server.login.LoginUserDto;
 import com.zhugeio.platform.scheduler.common.exception.BizException;
 import com.zhugeio.platform.scheduler.common.util.Assert;
@@ -84,6 +85,8 @@ public class JobCheckBizService {
 	JobDetailBizService jobDetailBizService;
 	@Resource
 	TableLineageBizService tableLineageBizService;
+	@Resource
+	FileParamService fileParamService;
 
     ExecutorService executor = new ThreadPoolExecutor(200, 200,
             0L, TimeUnit.MILLISECONDS,
@@ -231,6 +234,9 @@ public class JobCheckBizService {
 		return jobs.stream().map(job ->{
 			JobOnline jobOnline = new JobOnline();
 			BeanUtil.copyBeanNotNull2Bean(job, jobOnline);
+			String fileParamsJson  = genFileParamPath(job.getFileParamsJson());
+			jobOnline.setFileParamsJson(fileParamsJson);
+
 			JobExtCommonDto jobExtCommonDto = Optional.ofNullable(extJobMap.get(job.getId())).orElse(new JobExtCommonDto());
 			BeanUtil.copyBeanNotNull2Bean(jobExtCommonDto, jobOnline);
 			jobOnline.setJobId(job.getId());
@@ -238,6 +244,16 @@ public class JobCheckBizService {
 			jobOnline.setStatus(JobStatusEnum.ONLINE);
 			return jobOnline;
 		}).collect(Collectors.toList());
+	}
+
+	private String genFileParamPath(String fileParamsJson) {
+		List<JobDto.FileParamsContent> fileParams = JSON.parseArray(fileParamsJson, JobDto.FileParamsContent.class);
+		List<Long> fileParamIds = fileParams.stream().map(JobDto.FileParamsContent::getId).distinct().collect(Collectors.toList());
+		Map<Long, String> fileParamPathMap = fileParamService.getBasePathMap(fileParamIds);
+		for (JobDto.FileParamsContent fileParam : fileParams) {
+			fileParam.setPath(fileParamPathMap.get(fileParam.getId()));
+		}
+		return JSON.toJSONString(fileParams);
 	}
 
 	private void setClusterId(List<Job> jobs, List<JobOnline> jobOnlines) {

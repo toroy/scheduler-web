@@ -67,6 +67,12 @@ public interface Constants {
     String DATA_STORAGE_DFS_BASE_PATH = "data.storage.dfs.base-path";
 
     /**
+     * dfs configuration
+     * data.storage.dfs.base-path
+     */
+    String DATA_STORAGE_DFS_FILE_PARAM_PATH = "data.storage.dfs.file-param-path";
+
+    /**
      * 文件上传时本地临时存储路径
      */
     String DATA_UPLOAD_BASEDIR_PATH = "data.upload.basedir.path";

@@ -3,7 +3,7 @@ package com.zhugeio.platform.scheduler.web.server.dqc.service;
 import com.zhugeio.platform.scheduler.web.server.dqc.dto.DqcUserDto;
 import com.zhugeio.platform.scheduler.web.server.login.LoginUserDto;
 import com.zhugeio.platform.scheduler.common.util.Assert;
-//import com.clubfactory.platform.meta.client.service.MetaClientService;
+//import com.zhugeio.platform.meta.client.service.MetaClientService;
 import com.zhugeio.platform.scheduler.web.core.service.UserService;
 import com.zhugeio.platform.scheduler.web.core.vo.UserVO;
 import org.springframework.stereotype.Service;

@@ -15,7 +15,7 @@ import com.zhugeio.platform.scheduler.common.exception.BizException;
 import com.zhugeio.platform.scheduler.common.util.Assert;
 import com.zhugeio.platform.scheduler.common.util.BeanUtil;
 import com.zhugeio.platform.meta.client.dto.TableOwnerDto;
-//import com.clubfactory.platform.meta.client.service.MetaClientService;
+//import com.zhugeio.platform.meta.client.service.MetaClientService;
 import com.zhugeio.platform.meta.client.utils.DbUtil;
 import com.zhugeio.platform.scheduler.dal.enums.JobTypeEnum;
 import com.zhugeio.platform.scheduler.dal.enums.TaskStatusEnum;

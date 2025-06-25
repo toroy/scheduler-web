@@ -14,7 +14,7 @@ import com.zhugeio.platform.scheduler.common.util.BeanUtil;
 import com.zhugeio.platform.meta.client.dto.TableDto;
 import com.zhugeio.platform.meta.client.dto.TableSimpleDto;
 import com.zhugeio.platform.meta.client.enums.DbType;
-//import com.clubfactory.platform.meta.client.service.MetaClientService;
+//import com.zhugeio.platform.meta.client.service.MetaClientService;
 import com.zhugeio.platform.meta.client.utils.DbUtil;
 import com.zhugeio.platform.scheduler.dal.enums.SubscribeType;
 import com.zhugeio.platform.scheduler.dal.po.*;

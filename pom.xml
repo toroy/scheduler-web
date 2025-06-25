@@ -34,6 +34,7 @@
         <module>scheduler-web-server</module>
    		<module>scheduler-web-client</module>
         <module>scheduler-web-meta</module>
+        <module>sql-parser</module>
     </modules>
 
     <dependencyManagement>
@@ -47,6 +48,12 @@
             <dependency>
                 <groupId>com.zhugeio.platform</groupId>
                 <artifactId>scheduler-web-meta</artifactId>
+                <version>${web.client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zhugeio.platform</groupId>
+                <artifactId>sql-parser</artifactId>
                 <version>${web.client.version}</version>
             </dependency>
         
@@ -193,12 +200,6 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>42.2.2</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.clubfactory.platform</groupId>
-                <artifactId>sql-parser</artifactId>
-                <version>${sql.parser.version}</version>
             </dependency>
 
             <dependency>

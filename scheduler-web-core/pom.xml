@@ -34,7 +34,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.clubfactory.platform</groupId>
+			<groupId>com.zhugeio.platform</groupId>
 			<artifactId>sql-parser</artifactId>
 		</dependency>
 

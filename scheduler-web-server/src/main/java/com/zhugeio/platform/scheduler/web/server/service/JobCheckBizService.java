@@ -258,6 +258,9 @@ public class JobCheckBizService {
 			}
 			fileParam.setPath(fileParamVO.getFileParamBasePath());
 			fileParam.setTitle(fileParamVO.getFileParamName());
+			fileParam.setVersion(fileParamVO.getVersion());
+			fileParam.setFileName(fileParamVO.getFileName());
+			fileParam.setFileExt(fileParamVO.getFileExt());
 		}
 		return JSON.toJSONString(fileParams);
 	}

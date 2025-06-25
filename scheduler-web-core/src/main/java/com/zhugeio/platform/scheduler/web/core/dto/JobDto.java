@@ -50,6 +50,12 @@ public class JobDto extends JobVO {
 		private String path;
 
 		private String title;
+
+		private Integer version;
+
+		private String fileName;
+
+		private String fileExt;
 	}
 	
 	@Data

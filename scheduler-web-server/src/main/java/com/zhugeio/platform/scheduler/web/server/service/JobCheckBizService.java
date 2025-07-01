@@ -235,8 +235,6 @@ public class JobCheckBizService {
 		return jobs.stream().map(job ->{
 			JobOnline jobOnline = new JobOnline();
 			BeanUtil.copyBeanNotNull2Bean(job, jobOnline);
-			String fileParamsJson  = genFileParamPath(job.getFileParamsJson());
-			jobOnline.setFileParamsJson(fileParamsJson);
 
 			JobExtCommonDto jobExtCommonDto = Optional.ofNullable(extJobMap.get(job.getId())).orElse(new JobExtCommonDto());
 			BeanUtil.copyBeanNotNull2Bean(jobExtCommonDto, jobOnline);
@@ -245,24 +243,6 @@ public class JobCheckBizService {
 			jobOnline.setStatus(JobStatusEnum.ONLINE);
 			return jobOnline;
 		}).collect(Collectors.toList());
-	}
-
-	private String genFileParamPath(String fileParamsJson) {
-		List<JobDto.FileParamsContent> fileParams = JSON.parseArray(fileParamsJson, JobDto.FileParamsContent.class);
-		List<Long> fileParamIds = fileParams.stream().map(JobDto.FileParamsContent::getValue).distinct().collect(Collectors.toList());
-		Map<Long, FileParamVO> fileParamPathMap = fileParamService.getBasePathMap(fileParamIds);
-		for (JobDto.FileParamsContent fileParam : fileParams) {
-			FileParamVO fileParamVO = fileParamPathMap.get(fileParam.getValue());
-			if (fileParamVO == null) {
-				continue;
-			}
-			fileParam.setPath(fileParamVO.getFileParamBasePath());
-			fileParam.setTitle(fileParamVO.getFileParamName());
-			fileParam.setVersion(fileParamVO.getVersion());
-			fileParam.setFileName(fileParamVO.getFileName());
-			fileParam.setFileExt(fileParamVO.getFileExt());
-		}
-		return JSON.toJSONString(fileParams);
 	}
 
 	private void setClusterId(List<Job> jobs, List<JobOnline> jobOnlines) {

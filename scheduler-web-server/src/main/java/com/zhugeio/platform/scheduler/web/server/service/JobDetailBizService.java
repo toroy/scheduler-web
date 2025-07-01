@@ -105,6 +105,8 @@ public class JobDetailBizService {
 		alarmService.isValidAlarm(jobDto.getAlarms());
 		// 表示任务类型
 		getJobType(jobDto);
+		// 获取文件参数其他参数
+		jobDto.setFileParams(genFileParamPath(jobDto.getFileParams()));
 		// 任务保存
 		Long id = jobService.save(jobDto, userDto.getLocalUserId(), userDto.getDepartName());
 		callback.doInSaveDetail(userDto.getLocalUserId(), id);
@@ -112,6 +114,28 @@ public class JobDetailBizService {
 		alarmService.save(jobDto.getAlarms(), jobDto.getId(), userDto.getLocalUserId());
 		return id;
 	}
+
+	private List<JobDto.FileParamsContent> genFileParamPath(List<JobDto.FileParamsContent> fileParams) {
+		if (CollectionUtils.isEmpty(fileParams)) {
+			return fileParams;
+		}
+		List<Long> fileParamIds = fileParams.stream().map(JobDto.FileParamsContent::getValue).distinct().collect(Collectors.toList());
+		Map<Long, FileParamVO> fileParamPathMap = fileParamService.getBasePathMap(fileParamIds);
+		for (JobDto.FileParamsContent fileParam : fileParams) {
+			FileParamVO fileParamVO = fileParamPathMap.get(fileParam.getValue());
+			if (fileParamVO == null) {
+				continue;
+			}
+			fileParam.setPath(fileParamVO.getFileParamBasePath());
+			fileParam.setTitle(fileParamVO.getFileParamName());
+			fileParam.setVersion(fileParamVO.getVersion());
+			fileParam.setFileName(fileParamVO.getFileName());
+			fileParam.setFileExt(fileParamVO.getFileExt());
+		}
+		return fileParams;
+	}
+
+
 
 	private void getJobType(JobDto jobDto) {
 		if (jobDto.getJobType() == null) {
@@ -382,6 +406,8 @@ public class JobDetailBizService {
 		checkName(jobDto);
 		// 报警配置检验
 		alarmService.isValidAlarm(jobDto.getAlarms());
+		// 获取文件参数其他参数
+		jobDto.setFileParams(genFileParamPath(jobDto.getFileParams()));
 		// 任务保存
 		jobService.edit(jobDto, userDto.getLocalUserId(), userDto.getIsAdmin(), isCheck);
 		// 报警配置

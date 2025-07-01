@@ -9,6 +9,7 @@ import com.zhugeio.platform.scheduler.dal.enums.JobStatusEnum;
 import com.zhugeio.platform.scheduler.dal.enums.JobTypeEnum;
 import com.zhugeio.platform.scheduler.dal.po.Job;
 import com.zhugeio.platform.scheduler.web.core.dto.JobDto;
+import com.zhugeio.platform.scheduler.web.core.vo.FileParamVO;
 import com.zhugeio.platform.scheduler.web.core.vo.JobVO;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -118,8 +119,6 @@ public class JobService extends BaseNewService<JobVO,Job> {
     	job.setSchedulerTimeDto(jobDto.getSchedulerTimeDto());
     	job.setParams(JSON.toJSONString(jobDto.getSysParams()));
 		job.setFileParamsJson(JSON.toJSONString(jobDto.getFileParams()));
-    	job.setGroupId(job.getGroupId());
-    	job.setProjectId(job.getProjectId());
     	job.setRunOnTmpEmr(jobDto.getRunOnTmpEmr());
     	if (job.getJobType() == null) {
     		job.setJobType(JobTypeEnum.NORMAL);

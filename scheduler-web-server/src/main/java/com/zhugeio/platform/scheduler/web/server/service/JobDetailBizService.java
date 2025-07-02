@@ -327,6 +327,7 @@ public class JobDetailBizService {
 		// 分离系统参数
 		handleSystemConfig(jobDto);
 		this.genCollectExecParam(jobDto);
+		jobDto.setTimeOut(SysConfigUtil.getNumberByKey(SysConfigConstant.JOB_COLLECT_TIME_OUT));
 		edit(jobDto, userDto, new JobEditCallback() {
 			@Override
 			public void doInEditDetail(Long localUserId, Boolean isAdmin) {
@@ -363,7 +364,7 @@ public class JobDetailBizService {
 		// 分离系统参数
 		handleSystemConfig(jobDto);
 		this.genReflueExecParam(jobDto);
-		
+		jobDto.setTimeOut(SysConfigUtil.getNumberByKey(SysConfigConstant.JOB_REFLUE_TIME_OUT));
 		edit(jobDto, userDto, new JobEditCallback() {
 			@Override
 			public void doInEditDetail(Long localUserId, Boolean isAdmin) {
@@ -386,6 +387,7 @@ public class JobDetailBizService {
 		handleSystemConfig(jobDto);
 		// 获取执行参数
 		this.genExecParam(jobDto);
+		jobDto.setTimeOut(SysConfigUtil.getNumberByKey(SysConfigConstant.JOB_CAL_TIME_OUT));
 		edit(jobDto, userDto, new JobEditCallback() {
 			@Override
 			public void doInEditDetail(Long localUserId, Boolean isAdmin) {

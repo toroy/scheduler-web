@@ -152,6 +152,9 @@ public class JobService extends BaseNewService<JobVO,Job> {
     	updateParam.put("program_type", jobDto.getProgramType());
     	updateParam.put("deploy_mode", jobDto.getDeployMode());
 		updateParam.put("job_conf", jobDto.getJobConf());
+		if (jobDto.getTimeOut() != null) {
+			updateParam.put("time_out", jobDto.getTimeOut());
+		}
     	if (BooleanUtils.isTrue(isCheck)) {
     		updateParam.put("status",  JobStatusEnum.DOING);
     	}

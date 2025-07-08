@@ -203,13 +203,13 @@ public class FileParamBizService {
         updateParams.put("update_user",updateUser);
         if (StringUtils.isNotBlank(fileParamName)){
             ensureFileParamNameUnique(fileParamName,fileParamId);
-            updateParams.put("fileParam_name",fileParamName);
+            updateParams.put("file_param_name",fileParamName);
         }
         if (StringUtils.isNotBlank(fileParamDesc)){
             updateParams.put("remark",fileParamDesc);
         }
         if(fileParamType != null){
-            updateParams.put("fileParam_type",fileParamType);
+            updateParams.put("file_param_type",fileParamType);
             fileParamVO.setFileParamType(fileParamType);
         }
         if (file != null && !file.isEmpty()){

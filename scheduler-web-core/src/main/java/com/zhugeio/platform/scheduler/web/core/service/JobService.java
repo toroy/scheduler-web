@@ -204,13 +204,12 @@ public class JobService extends BaseNewService<JobVO,Job> {
 		return true;
 	}
 
-	public Boolean editRedoingByFileParamId(Long fileParamId, Long userId) {
-		Assert.notNull(fileParamId);
+	public Boolean editRedoingByIds(List<Long> ids, Long userId) {
 		Assert.notNull(userId);
 
 		Job job = new Job();
 		job.setIsDeleted(false);
-		job.setScriptId(fileParamId);
+		job.setIds(ids);
 
 		Map<String, Object> updateParam = Maps.newHashMap();
 		updateParam.put("status", JobStatusEnum.DOING);

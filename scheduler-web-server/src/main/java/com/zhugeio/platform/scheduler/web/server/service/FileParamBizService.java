@@ -1,14 +1,21 @@
 package com.zhugeio.platform.scheduler.web.server.service;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.zhugeio.platform.scheduler.common.bean.PageUtils;
 import com.zhugeio.platform.scheduler.common.exception.BizException;
 import com.zhugeio.platform.scheduler.common.util.Assert;
 import com.zhugeio.platform.scheduler.common.util.BeanUtil;
+import com.zhugeio.platform.scheduler.dal.dao.JobMapper;
+import com.zhugeio.platform.scheduler.dal.dao.JobOnlineMapper;
 import com.zhugeio.platform.scheduler.dal.enums.ScriptType;
+import com.zhugeio.platform.scheduler.dal.po.BasePO;
 import com.zhugeio.platform.scheduler.dal.po.FileParam;
+import com.zhugeio.platform.scheduler.dal.po.Job;
+import com.zhugeio.platform.scheduler.dal.po.JobOnline;
 import com.zhugeio.platform.scheduler.web.core.Constants;
+import com.zhugeio.platform.scheduler.web.core.dto.JobDto;
 import com.zhugeio.platform.scheduler.web.core.enums.ErrorCode;
 import com.zhugeio.platform.scheduler.web.core.service.FileParamService;
 import com.zhugeio.platform.scheduler.web.core.service.JobOnlineService;
@@ -69,6 +76,10 @@ public class FileParamBizService {
     private List<String> allowViewList;
 
     private List<String> allowUploadList;
+    @Autowired
+    private JobMapper jobMapper;
+    @Autowired
+    private JobOnlineMapper jobOnlineMapper;
 
     @PostConstruct
     public void init(){
@@ -228,13 +239,12 @@ public class FileParamBizService {
             this.uploadFileToDFS(dfsFileBasePath, userDir,dfsFileName,file);
             //  触发对应任务为待审核状态
             if (fileParamVO.getFileParamType() == ScriptType.USER_LEVEL) {
-                jobService.editRedoingByFileParamId(fileParamId, userDto.getLocalUserId());
+                editJobStatus(userDto, fileParamId);
             }
 
-            if (fileParamVO.getFileParamType() == ScriptType.SYS_LEVEL){
-                jobOnlineService.editVersionBySysSciptId(fileParamId,newVersion);
+            if (fileParamVO.getFileParamType() == ScriptType.SYS_LEVEL) {
+                editJobOnlineFileParamVersion(fileParamId, newVersion);
             }
-
 
         }
     }
@@ -296,16 +306,58 @@ public class FileParamBizService {
 
         // 触发对应任务为待审核状态
         if (fileParamVO.getFileParamType() == ScriptType.USER_LEVEL) {
-            jobService.editRedoingByFileParamId(fileParamId, userDto.getLocalUserId());
+            editJobStatus(userDto, fileParamId);
         }
 
-        if (fileParamVO.getFileParamType() == ScriptType.SYS_LEVEL){
-            jobOnlineService.editVersionBySysSciptId(fileParamId,newVersion);
+        if (fileParamVO.getFileParamType() == ScriptType.SYS_LEVEL) {
+            editJobOnlineFileParamVersion(fileParamId, newVersion);
         }
 
         // 上传文件
         uploadContentToDfs(fileParamVO.getFileParamBasePath(), userDir,dfsFileName,content);
 
+    }
+
+    private void editJobStatus(LoginUserDto userDto, Long fileParamId) {
+        List<Job> jobs = jobMapper.listHasParamFiles();
+        if (CollectionUtils.isEmpty(jobs)) {
+            return;
+        }
+        List<Long> jobIds = jobs.stream().filter(job -> {
+            List<JobDto.FileParamsContent> fileParams = JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class);
+            List<Long> valueIds = fileParams.stream().map(JobDto.FileParamsContent::getValue).collect(Collectors.toList());
+            return valueIds.contains(fileParamId);
+        }).map(BasePO::getId).collect(Collectors.toList());
+        if (CollectionUtils.isEmpty(jobIds)) {
+            return;
+        }
+        jobService.editRedoingByIds(jobIds, userDto.getLocalUserId());
+    }
+
+    private void editJobOnlineFileParamVersion(Long fileParamId, Integer newVersion) {
+        List<JobOnline> jobs = jobOnlineMapper.listHasParamFiles();
+        if (CollectionUtils.isEmpty(jobs)) {
+           return;
+        }
+        for (JobOnline job : jobs) {
+            List<JobDto.FileParamsContent> fileParams = JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class);
+            boolean isExist = false;
+            for (JobDto.FileParamsContent fileParam : fileParams) {
+                if (fileParam.getValue().equals(fileParamId)) {
+                    fileParam.setVersion(newVersion);
+                    isExist = true;
+                }
+            }
+            if (!isExist) {
+                continue;
+            }
+            JobOnline jobOnline = new JobOnline();
+            jobOnline.setId(job.getId());
+            Map<String, Object> updateJobParams = Maps.newHashMap();
+            updateJobParams.put("file_params_json",JSON.toJSONString(fileParams));
+            jobOnline.setUpdateParam(updateJobParams);
+            jobOnlineService.edit(jobOnline);
+        }
     }
 
 
@@ -610,61 +662,6 @@ public class FileParamBizService {
     }
 
 
-    /**
-     * 解析zip包批量添加脚本
-     * @param userDto
-     * @param zipDto
-     * @return
-     */
-    public boolean parseFileParamZip(LoginUserDto userDto, FileParamZipDto zipDto){
-        Assert.notNull(zipDto,"脚本压缩包信息");
-        Assert.notNull(userDto,"用户信息");
-        String localZipFile = String.format("%s.zip",userDto.getAlias());
-        String dfsZipFilePath = zipDto.getZipFile();
-        String localZipFilePath = null;
-        String uncompressDir = null;
-        if (!zipDto.isS3Mode()){
-            Long fileParamId = zipDto.getZipFileParamId();
-            Assert.notNull(fileParamId,"脚本模式下fileParamId");
-            FileParamVO fileParamVO = this.getFileParamById(fileParamId);
-            Assert.notNull(fileParamVO,String.format("脚本ID【%s】对应的脚本信息",fileParamId));
-            dfsZipFilePath = fileParamService.getDfsFilePath(fileParamVO);
-        }
-        try {
-            localZipFilePath = this.copyDfsToLocal(dfsZipFilePath,localZipFile);
-            log.info("download zip package form {} to {} success",dfsZipFilePath,localZipFilePath);
-            uncompressDir = FileUtils.genZipUncompressDir();
-            ZipUtils.unzip(localZipFilePath,uncompressDir);
-            log.info("uncompress zip package {} to {} success",localZipFilePath,uncompressDir);
-
-            File [] fileList = FileUtils.listFiles(uncompressDir);
-            if (fileList == null || fileList.length == 0){
-                throw new BizException("zip包解压失败，或者一级目录无文件");
-            }
-            this.processFileParamList(userDto,fileList);
-            log.info("zip package {} files save success",dfsZipFilePath);
-            return true;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }finally {
-            try {
-                if (localZipFilePath != null) {
-                    FileUtils.deleteIfExists(localZipFilePath);
-                    log.info("local zip package clear success");
-                }
-            } catch (IOException e) {
-                log.error("clear local zip package failed",e);
-            }
-            try {
-                if (uncompressDir != null) {
-                    FileUtils.deleteIfExists(uncompressDir);
-                    log.info("local zip package uncompress dir clear success");
-                }
-            } catch (IOException e) {
-                log.error("clear local uncompress dir failed",e);
-            }
-        }
-    }
     
 	public void changeFileParamOwner(ChangeDto changeDto, LoginUserDto userDto) {
 		List<Long> fileParamIds = changeDto.getFileParamIds();
@@ -693,67 +690,6 @@ public class FileParamBizService {
 		}
 	}
 
-
-    /**
-     * 批量处理文件
-     * @param userDto
-     * @param fileList
-     */
-    private void processFileParamList(LoginUserDto userDto, File[] fileList){
-        List<FileParamVO> updateFileParams = Lists.newArrayList();
-        List<File> newFileParams  = Lists.newArrayList();
-        List<String> conflictFileParams = Lists.newArrayList();
-        List<String> fileParamNames = Lists.newArrayList();
-        Long currentUid = userDto.getLocalUserId();
-        Map<String,File> fileMap = Maps.newHashMap();
-        List<String>  updateFileParamNames = Lists.newArrayList();
-
-        // 脚本类型校验
-        for (File f : fileList){
-            String fileParamName = f.getName().trim();
-            String fileExt = FileUtils.suffix(fileParamName);
-            if (StringUtils.isBlank(fileExt) || !allowUploadList.contains(fileExt.toLowerCase().trim())){
-                throw new BizException(String.format("当前只支持以下类型的脚本: %s",String.join(",",allowUploadList)));
-            }
-            if (fileParamNames.contains(fileParamName)){
-                throw new BizException("zip包内有重复文件,不允许通过在文件名首尾加空格来区分文件");
-            }
-            fileParamNames.add(fileParamName);
-            fileMap.put(fileParamName,f);
-        }
-        FileParam fileParam = new FileParam();
-        fileParam.setIsDeleted(false);
-        fileParam.setIdsString(fileParamNames);
-        fileParam.setQueryListFieldName("fileParam_name");
-        List<FileParamVO> fileParamVOS = fileParamService.list(fileParam);
-
-        fileParamVOS.forEach(vo -> {
-            if (!currentUid.equals(vo.getCreateUser())){
-                conflictFileParams.add(vo.getFileParamName());
-            }else {
-                updateFileParams.add(vo);
-                updateFileParamNames.add(vo.getFileParamName());
-            }
-        });
-
-        if (CollectionUtils.isNotEmpty(conflictFileParams)){
-            throw new BizException(String.format("Zip包中文件名【%s】在已经有其他用户使用,请更改后重新上传",
-                    String.join(",",conflictFileParams)));
-        }
-
-        for (File f : fileList){
-            String fileParamName = f.getName().trim();
-            if (!updateFileParamNames.contains(fileParamName)){
-                newFileParams.add(f);
-            }
-        }
-
-        this.persistFileParams(newFileParams,userDto);
-        log.info("persist {} fileParams success",newFileParams.size());
-        this.updateFileParams(fileMap,updateFileParams,userDto);
-        log.info("update {} fileParams success",updateFileParams.size());
-
-    }
 
     /**
      * 持久化脚本
@@ -801,54 +737,6 @@ public class FileParamBizService {
         });
         fileParamService.saveBatch(fileParams);
     }
-
-    /**
-     * 更新脚本
-     * @param fileMap
-     * @param updateFileParams
-     * @param userDto
-     */
-    private void updateFileParams(Map<String,File> fileMap,List<FileParamVO> updateFileParams,LoginUserDto userDto){
-        updateFileParams.forEach(vo -> {
-            String fileParamName = vo.getFileParamName();
-            File f = fileMap.get(fileParamName);
-            if (f == null){
-                throw new BizException(String.format("获取文件%s失败",fileParamName));
-            }
-
-            Long fileParamId = vo.getId();
-            Integer newVersion = vo.getVersion() + 1;
-            String dfsFileName = String.format("%s_%s",vo.getFileName(),newVersion);
-            String localFilePath = f.getAbsolutePath();
-
-            String dfsFileBasePath = vo.getFileParamBasePath();
-            String dfsFilePath = DFSUtils.getDfsFilePath(dfsFileBasePath, dfsFileName);
-
-            try {
-                if (!DFSUtils.getInstance().exists(dfsFileBasePath)) {
-                    DFSUtils.getInstance().mkdir(dfsFileBasePath);
-                }
-                log.info("开始上传文件{}到DFS路径:{}",fileParamName,dfsFilePath);
-                DFSUtils.getInstance().copyLocalToDfs(localFilePath, dfsFilePath, true, true);
-            } catch (IOException e) {
-                log.error(e.getMessage(), e);
-                throw new BizException("文件上传失败:" + e.getMessage());
-            }
-
-            // 脚本记录入库
-            FileParam newFileParam = new FileParam();
-            newFileParam.setId(fileParamId);
-            newFileParam.setIsDeleted(false);
-            Map<String,Object> updateParams = Maps.newHashMap();
-            updateParams.put("update_user",userDto.getLocalUserId());
-            updateParams.put("version",newVersion);
-            newFileParam.setUpdateParam(updateParams);
-            fileParamService.edit(newFileParam);
-            jobService.editRedoingByFileParamId(fileParamId, userDto.getLocalUserId());
-        });
-
-    }
-
 
 
 }

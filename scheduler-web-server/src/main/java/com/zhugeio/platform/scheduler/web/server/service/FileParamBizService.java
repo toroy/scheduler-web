@@ -240,7 +240,6 @@ public class FileParamBizService {
             this.uploadFileToDFS(dfsFileBasePath, userDir,dfsFileName,file);
             //  触发对应任务为待审核状态
             if (fileParamVO.getFileParamType() == ScriptType.USER_LEVEL) {
-                //editJobStatus(userDto, fileParamId);
                 editJobFileParamVersion(userDto, fileParamId, newVersion);
             }
 
@@ -309,7 +308,6 @@ public class FileParamBizService {
 
         // 触发对应任务为待审核状态
         if (fileParamVO.getFileParamType() == ScriptType.USER_LEVEL) {
-            //editJobStatus(userDto, fileParamId);
             editJobFileParamVersion(userDto, fileParamId, newVersion);
         }
 
@@ -320,22 +318,6 @@ public class FileParamBizService {
         // 上传文件
         uploadContentToDfs(fileParamVO.getFileParamBasePath(), userDir,dfsFileName,content);
 
-    }
-
-    private void editJobStatus(LoginUserDto userDto, Long fileParamId) {
-        List<Job> jobs = jobMapper.listHasParamFiles();
-        if (CollectionUtils.isEmpty(jobs)) {
-            return;
-        }
-        List<Long> jobIds = jobs.stream().filter(job -> {
-            List<JobDto.FileParamsContent> fileParams = JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class);
-            List<Long> valueIds = fileParams.stream().map(JobDto.FileParamsContent::getValue).collect(Collectors.toList());
-            return valueIds.contains(fileParamId);
-        }).map(BasePO::getId).collect(Collectors.toList());
-        if (CollectionUtils.isEmpty(jobIds)) {
-            return;
-        }
-        jobService.editRedoingByIds(jobIds, userDto.getLocalUserId());
     }
 
     private void editJobFileParamVersion(LoginUserDto userDto, Long fileParamId, Integer newVersion) {

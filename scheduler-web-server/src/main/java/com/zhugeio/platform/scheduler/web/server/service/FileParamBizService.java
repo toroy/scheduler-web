@@ -9,6 +9,7 @@ import com.zhugeio.platform.scheduler.common.util.Assert;
 import com.zhugeio.platform.scheduler.common.util.BeanUtil;
 import com.zhugeio.platform.scheduler.dal.dao.JobMapper;
 import com.zhugeio.platform.scheduler.dal.dao.JobOnlineMapper;
+import com.zhugeio.platform.scheduler.dal.enums.JobStatusEnum;
 import com.zhugeio.platform.scheduler.dal.enums.ScriptType;
 import com.zhugeio.platform.scheduler.dal.po.BasePO;
 import com.zhugeio.platform.scheduler.dal.po.FileParam;
@@ -239,10 +240,12 @@ public class FileParamBizService {
             this.uploadFileToDFS(dfsFileBasePath, userDir,dfsFileName,file);
             //  触发对应任务为待审核状态
             if (fileParamVO.getFileParamType() == ScriptType.USER_LEVEL) {
-                editJobStatus(userDto, fileParamId);
+                //editJobStatus(userDto, fileParamId);
+                editJobFileParamVersion(userDto, fileParamId, newVersion);
             }
 
             if (fileParamVO.getFileParamType() == ScriptType.SYS_LEVEL) {
+                editJobFileParamVersion(null, fileParamId, newVersion);
                 editJobOnlineFileParamVersion(fileParamId, newVersion);
             }
 
@@ -306,7 +309,8 @@ public class FileParamBizService {
 
         // 触发对应任务为待审核状态
         if (fileParamVO.getFileParamType() == ScriptType.USER_LEVEL) {
-            editJobStatus(userDto, fileParamId);
+            //editJobStatus(userDto, fileParamId);
+            editJobFileParamVersion(userDto, fileParamId, newVersion);
         }
 
         if (fileParamVO.getFileParamType() == ScriptType.SYS_LEVEL) {
@@ -332,6 +336,36 @@ public class FileParamBizService {
             return;
         }
         jobService.editRedoingByIds(jobIds, userDto.getLocalUserId());
+    }
+
+    private void editJobFileParamVersion(LoginUserDto userDto, Long fileParamId, Integer newVersion) {
+        List<Job> jobs = jobMapper.listHasParamFiles();
+        if (CollectionUtils.isEmpty(jobs)) {
+            return;
+        }
+        for (Job job : jobs) {
+            List<JobDto.FileParamsContent> fileParams = JSON.parseArray(job.getFileParamsJson(), JobDto.FileParamsContent.class);
+            boolean isExist = false;
+            for (JobDto.FileParamsContent fileParam : fileParams) {
+                if (fileParam.getValue().equals(fileParamId)) {
+                    fileParam.setVersion(newVersion);
+                    isExist = true;
+                }
+            }
+            if (!isExist) {
+                continue;
+            }
+            Job jobDo = new Job();
+            jobDo.setId(job.getId());
+            Map<String, Object> updateParam = Maps.newHashMap();
+            updateParam.put("file_params_json",JSON.toJSONString(fileParams));
+            if (userDto != null) {
+                updateParam.put("status", JobStatusEnum.DOING);
+                updateParam.put("update_user", userDto.getLocalUserId());
+            }
+            jobDo.setUpdateParam(updateParam);
+            jobService.edit(jobDo);
+        }
     }
 
     private void editJobOnlineFileParamVersion(Long fileParamId, Integer newVersion) {

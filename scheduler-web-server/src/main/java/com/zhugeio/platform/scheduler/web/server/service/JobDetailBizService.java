@@ -477,6 +477,10 @@ public class JobDetailBizService {
 			if (StringUtils.isBlank(content.getName())) {
 				continue;
 			}
+			// port不放执行文件里
+			if (StringUtils.equalsAnyIgnoreCase(content.getName(), "port")) {
+				continue;
+			}
 			StringBuilder sb = new StringBuilder();
 			sb.append(content.getName());
 			if (StringUtils.isNotBlank(content.getValue())) {
